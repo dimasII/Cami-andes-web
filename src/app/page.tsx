@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MapboxMap from "../components/MapboxMap";
 
 export default function Home() {
   return (
@@ -57,6 +58,18 @@ export default function Home() {
             </p>
           </article>
         ))}
+      </section>
+
+      {/* MAPA */}
+      <section className="mx-auto w-full max-w-5xl px-6">
+        <h2 className="mb-2 text-2xl font-bold tracking-tight">
+          🗺️ Territorio: de Apurímac a Galicia
+        </h2>
+        <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-300">
+          Explora el punto de partida en Abancay, Apurímac. Mueve el mapa, haz
+          zoom y haz clic en el marcador.
+        </p>
+        <MapboxMap />
       </section>
 
       {/* CTA */}
