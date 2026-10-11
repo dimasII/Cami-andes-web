@@ -1,26 +1,219 @@
 @import "tailwindcss";
 
+/* ——— Vértice Verde · paleta ——— */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --moss: oklch(92% 0.03 150);
+  --emerald: oklch(34% 0.08 160);
+  --forest: oklch(22% 0.05 160);
+  --fog: rgba(255, 255, 255, 0.14);
+  --text: oklch(20% 0.02 160);
+  --light: rgba(255, 255, 255, 0.58);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-instrument);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #eef7ef;
+  --foreground: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(198, 255, 221, 0.55), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(142, 202, 174, 0.18), transparent 20%),
+    linear-gradient(180deg, #eef7ef 0%, #dbeadf 100%);
+  color: var(--text);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.55), transparent 15%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.4), transparent 14%),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.3), transparent 18%);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.serif {
+  font-family: var(--font-instrument), "Instrument Serif", serif;
+  letter-spacing: -0.05em;
+}
+
+/* ——— Botón niebla ——— */
+.mist-button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(30px) saturate(1.1);
+  border: none;
+  color: white;
+  transition: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 12px 50px rgba(10, 50, 25, 0.16);
+}
+
+.mist-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.22), transparent 70%);
+  opacity: 0;
+  transition: 0.7s ease;
+}
+
+.mist-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.mist-button:hover::before {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+/* ——— Entrada cinematográfica ——— */
+.condense {
+  opacity: 0;
+  filter: blur(22px);
+  transform: translateY(40px) scale(0.96);
+  animation: condense 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.condense-1 { animation-delay: 0s; }
+.condense-2 { animation-delay: 0.18s; }
+.condense-3 { animation-delay: 0.32s; }
+.condense-4 { animation-delay: 0.46s; }
+
+/* ——— Header flotante ——— */
+.header-float {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(28px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ——— Superficies ——— */
+.vapor {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(32px);
+  box-shadow: 0 30px 80px rgba(11, 40, 20, 0.1);
+}
+
+.ascend-light {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 20%),
+    linear-gradient(180deg, #edf7ef 0%, #d7eadb 100%);
+}
+
+.ascend-mid {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.458), transparent 40%),
+    linear-gradient(180deg, #1a2e22 0%, #1b5b2c 100%);
+  position: relative;
+}
+
+.ascend-deep {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 14%),
+    linear-gradient(180deg, #234334 0%, #11251c 100%);
+}
+
+/* ——— Formas orgánicas ——— */
+.organic {
+  border-radius: 42% 58% 61% 39% / 38% 36% 64% 62%;
+}
+
+.leaf {
+  border-radius: 58% 42% 64% 36% / 41% 60% 40% 59%;
+}
+
+.canopy {
+  position: absolute;
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 30px 80px rgba(16, 50, 30, 0.14);
+  animation: float 10s ease-in-out infinite;
+}
+
+.earth {
+  position: relative;
+  overflow: hidden;
+}
+
+.earth::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(104, 160, 123, 0.18), transparent 20%),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.04), transparent 18%);
+  opacity: 0.7;
+}
+
+.moss-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+}
+
+/* ——— Keyframes ——— */
+@keyframes condense {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ——— Mapa Mapbox dentro del estilo ——— */
+.map-shell {
+  overflow: hidden;
+  border-radius: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 30px 80px rgba(11, 40, 20, 0.18);
+}
+
+.map-shell > div {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
