@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "Camiñandes | COIL Apurímac - Galicia",
   description:
     "Proyecto COIL de intercambio cultural entre Apurímac (Perú) y Galicia (España): camino, memoria y comunidad.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

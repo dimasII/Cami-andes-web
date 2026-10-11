@@ -28,20 +28,23 @@ const pilares = [
 export default function Home() {
   return (
     <div>
-      {/* HERO */}
+      {/* HERO con video de fondo */}
       <section className="ascend-mid relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-        {/* Blobs flotantes */}
-        <div className="canopy organic left-[6%] top-[16%] hidden h-[280px] w-[280px] md:block"></div>
-        <div
-          className="canopy leaf right-[8%] top-[12%] hidden h-[380px] w-[380px] md:block"
-          style={{ animationDuration: "14s" }}
-        ></div>
-        <div
-          className="canopy organic bottom-[10%] left-[16%] hidden h-[220px] w-[220px] lg:block"
-          style={{ animationDuration: "12s" }}
-        ></div>
+        {/* Video de fondo — solo en el hero */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        />
+        {/* Velo neutro muy sutil solo para legibilidad, sin tinte verde */}
+        <div className="absolute inset-0 bg-black/25" />
 
-        <div className="relative z-10 max-w-5xl rounded-[4rem] px-6 py-14 text-center text-white sm:px-10">
+        <div className="relative z-10 max-w-5xl rounded-[4rem] px-6 py-14 text-center text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.8)] sm:px-10">
           <div className="condense condense-1 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-white/80">
             Proyecto COIL · 2026
           </div>
@@ -122,8 +125,9 @@ export default function Home() {
               De Apurímac a Galicia.
             </h2>
             <p className="mb-8 mt-4 max-w-2xl text-lg leading-9 text-emerald-950/70">
-              Explora el punto de partida en Abancay, Apurímac. Mueve el mapa,
-              haz zoom y haz clic en el marcador.
+              Explora la región Apurímac resaltada en el mapa, con los límites de
+              sus 7 provincias: Abancay, Andahuaylas, Antabamba, Aymaraes,
+              Chincheros, Cotabambas y Grau.
             </p>
           </Reveal>
           <Reveal delay={0.15}>

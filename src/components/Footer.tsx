@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,8 +9,17 @@ export default function Footer() {
       <div className="relative z-10 mx-auto max-w-[1700px]">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr]">
           <div>
-            <div className="text-[11px] uppercase tracking-[0.34em] text-white/40">
-              Camiñandes · COIL 2026
+            <div className="flex items-center gap-4">
+              <Image
+                src="/logo.svg"
+                alt="Logotipo Camiñandes"
+                width={52}
+                height={52}
+                className="h-13 w-13 rounded-full bg-white/10 object-contain p-1 brightness-0 invert"
+              />
+              <div className="text-[11px] uppercase tracking-[0.34em] text-white/40">
+                Camiñandes · COIL 2026
+              </div>
             </div>
             <h2 className="serif mt-6 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.9]">
               Caminando entre Apurímac y Galicia.

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MorphIcon } from "./MorphIcon";
-import { Leaf, Menu, X } from "lucide";
+import { Menu, X } from "lucide";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -20,8 +21,15 @@ export default function Navbar() {
     <header className="fixed top-6 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2">
       <div className="header-float flex items-center justify-between gap-6 rounded-full px-6 py-3 sm:px-8 sm:py-4">
         <Link href="/" className="flex items-center gap-4">
-          <div className="grid h-11 w-11 place-items-center rounded-full bg-white/10">
-            <MorphIcon icon={Leaf} size={22} color="white" />
+          <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-white/10">
+            <Image
+              src="/logo.svg"
+              alt="Logotipo Camiñandes"
+              width={40}
+              height={40}
+              className="h-9 w-9 object-contain brightness-0 invert"
+              priority
+            />
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.35em] text-white/55">
