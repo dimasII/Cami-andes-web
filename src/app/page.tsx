@@ -1,8 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { MorphIcon } from "../components/MorphIcon";
 import { ArrowRight, Brain, Footprints, Map as MapIcon, Users } from "lucide";
 import MapboxMap from "../components/MapboxMap";
+import PanelLugar from "../components/PanelLugar";
+import FiltrosMapa, { type Contenido } from "../components/FiltrosMapa";
 import Reveal from "../components/Reveal";
+import type { LugarEnriquecido, TipoLugar } from "../lib/provincias";
 
 const pilares = [
   {
@@ -26,6 +32,11 @@ const pilares = [
 ];
 
 export default function Home() {
+  const [seleccionado, setSeleccionado] = useState<LugarEnriquecido | null>(null);
+  const [provincia, setProvincia] = useState<string | null>(null);
+  const [tipos, setTipos] = useState<TipoLugar[]>([]);
+  const noopContenido = (_: Contenido) => {};
+
   return (
     <div>
       {/* HERO con video de fondo */}
@@ -127,12 +138,31 @@ export default function Home() {
             <p className="mb-8 mt-4 max-w-2xl text-lg leading-9 text-emerald-950/70">
               Explora la región Apurímac resaltada en el mapa, con los límites de
               sus 7 provincias: Abancay, Andahuaylas, Antabamba, Aymaraes,
-              Chincheros, Cotabambas y Grau.
+              Chincheros, Cotabambas y Grau. Toca cada punto para ver sus fotos
+              e historia.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="map-shell">
-              <MapboxMap />
+            <div className="mb-4">
+              <FiltrosMapa
+                provincia={provincia}
+                onProvincia={(slug) => { setProvincia(slug); setSeleccionado(null); }}
+                contenido="todo"
+                onContenido={noopContenido}
+                tipos={tipos}
+                onToggleTipo={(t) => setTipos((v) => (v.includes(t) ? v.filter((x) => x !== t) : [...v, t]))}
+                onLimpiarTipos={() => setTipos([])}
+                mostrarContenido={false}
+              />
+            </div>
+            <div className="map-shell relative">
+              <MapboxMap
+                foco={provincia}
+                filtroProvincia={provincia}
+                filtroTipos={tipos}
+                onSelectLugar={setSeleccionado}
+              />
+              <PanelLugar lugar={seleccionado} onClose={() => setSeleccionado(null)} />
             </div>
           </Reveal>
         </div>

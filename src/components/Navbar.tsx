@@ -9,6 +9,7 @@ import { Menu, X } from "lucide";
 const links = [
   { href: "/", label: "Inicio" },
   { href: "/proyecto/", label: "Proyecto" },
+  { href: "/provincias/", label: "Provincias" },
   { href: "/galeria/", label: "Galería" },
   { href: "/blog/", label: "Blog" },
   { href: "/contacto/", label: "Contacto" },
