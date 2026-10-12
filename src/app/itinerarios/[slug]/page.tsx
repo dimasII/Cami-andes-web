@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide";
 import Reveal from "@/components/Reveal";
+import { MorphIcon } from "@/components/MorphIcon";
 import { AntesDeViajar, Cronograma, LugaresEnMapa } from "@/components/itinerarios";
 import { ITINERARIOS, itinerarioPorSlug } from "@/lib/itinerarios";
 
@@ -171,9 +173,9 @@ export default async function ItinerarioDetalle({
         <div className="mt-10 text-center">
           <Link
             href="/itinerarios/"
-            className="inline-block rounded-full bg-emerald-950/5 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-emerald-950 transition hover:bg-emerald-950/10 focus-visible:outline-2 focus-visible:outline-emerald-700"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald-950/5 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-emerald-950 transition hover:bg-emerald-950/10 focus-visible:outline-2 focus-visible:outline-emerald-700"
           >
-            ← Todos los itinerarios
+            <MorphIcon icon={ArrowLeft} size={13} color="currentColor" /> Todos los itinerarios
           </Link>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide";
 import Reveal from "./Reveal";
+import { MorphIcon } from "./MorphIcon";
 import { provinciaPorSlug } from "../lib/provincias";
 import { AVISO_HORARIOS, type DiaItinerario, type Itinerario } from "../lib/itinerarios";
 
-/** Tarjeta comparable para el índice de itinerarios. */
 export function TarjetaItinerario({
   itinerario,
   indice,
@@ -69,9 +70,9 @@ export function TarjetaItinerario({
           <Link
             href={`/itinerarios/${itinerario.slug}/`}
             aria-label={`Ver el itinerario ${itinerario.nombre}`}
-            className="mt-8 inline-block rounded-full bg-emerald-950 px-8 py-4 text-center text-[11px] uppercase tracking-[0.24em] text-white transition hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-950 px-8 py-4 text-center text-[11px] uppercase tracking-[0.24em] text-white transition hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
           >
-            Ver itinerario →
+            Ver itinerario <MorphIcon icon={ArrowRight} size={14} color="white" />
           </Link>
         </div>
       </article>
@@ -79,7 +80,6 @@ export function TarjetaItinerario({
   );
 }
 
-/** Cronograma organizado por días, con horarios orientativos. */
 export function Cronograma({ dias }: { dias: DiaItinerario[] }) {
   const conHorarios = dias.some((d) => d.horarios.length > 0);
   return (
@@ -188,9 +188,9 @@ export function LugaresEnMapa({
               <div className="serif mt-1 text-2xl leading-tight">{lugar.nombre}</div>
               <Link
                 href="/provincias/#mapa-provincias"
-                className="mt-2 inline-block text-[11px] uppercase tracking-[0.2em] text-emerald-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-emerald-700"
+                className="mt-2 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-emerald-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-emerald-700"
               >
-                Ver en el mapa →
+                Ver en el mapa <MorphIcon icon={ArrowRight} size={12} color="currentColor" />
               </Link>
             </li>
           );

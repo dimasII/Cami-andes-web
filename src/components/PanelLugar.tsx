@@ -1,19 +1,14 @@
 "use client";
-
 import { useEffect } from "react";
-import { TIPO_LABEL, type LugarEnriquecido } from "../lib/provincias";
+import { MapPin, X } from "lucide";
+import { MorphIcon } from "./MorphIcon";
 import Carrusel from "./Carrusel";
-
+import { TIPO_LABEL, type LugarEnriquecido } from "../lib/provincias";
 interface PanelLugarProps {
   lugar: LugarEnriquecido | null;
   onClose: () => void;
 }
 
-/**
- * Detalle a pantalla completa: se abre al tocar un punto del mapa,
- * sale del mapa y abarca toda la pantalla (fondo + tarjeta central
- * con carrusel grande, descripción y datos). Cierra con ×, clic fuera o Esc.
- */
 export default function PanelLugar({ lugar, onClose }: PanelLugarProps) {
   useEffect(() => {
     if (!lugar) return;
@@ -52,9 +47,9 @@ export default function PanelLugar({ lugar, onClose }: PanelLugarProps) {
           <button
             onClick={onClose}
             aria-label="Cerrar detalle"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-950/10 text-2xl text-emerald-950 transition hover:bg-emerald-950/20"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-950/10 text-emerald-950 transition hover:bg-emerald-950/20"
           >
-            ×
+            <MorphIcon icon={X} size={18} color="currentColor" />
           </button>
         </div>
 
@@ -74,8 +69,9 @@ export default function PanelLugar({ lugar, onClose }: PanelLugarProps) {
         </p>
 
         <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-emerald-950/10 pt-4 text-sm text-emerald-900/60">
-          <span>
-            📍 {lugar.coords[1].toFixed(4)}, {lugar.coords[0].toFixed(4)}
+          <span className="inline-flex items-center gap-1.5">
+            <MorphIcon icon={MapPin} size={15} color="currentColor" />
+            {lugar.coords[1].toFixed(4)}, {lugar.coords[0].toFixed(4)}
           </span>
           {lugar.precision === "aproximada" && (
             <span className="rounded-full bg-amber-100 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-amber-800">

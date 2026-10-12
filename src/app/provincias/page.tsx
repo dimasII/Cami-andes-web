@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide";
+import { MorphIcon } from "../../components/MorphIcon";
 import MapboxMap from "../../components/MapboxMap";
 import PanelLugar from "../../components/PanelLugar";
 import Carrusel from "../../components/Carrusel";
@@ -135,8 +137,8 @@ export default function ProvinciasPage() {
                               <p className="mt-2 line-clamp-2 text-sm leading-7 text-emerald-950/65">
                                 {l.descripcion}
                               </p>
-                              <span className="mt-2 inline-block text-[11px] uppercase tracking-[0.2em] text-emerald-800">
-                                Ver fotos e info →
+                              <span className="mt-2 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-emerald-800">
+                                Ver fotos e info <MorphIcon icon={ArrowRight} size={12} color="currentColor" />
                               </span>
                             </button>
                           ))}
@@ -183,9 +185,9 @@ export default function ProvinciasPage() {
         <div className="mt-16 text-center">
           <Link
             href="/"
-            className="inline-block rounded-full bg-emerald-950/5 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-emerald-950 transition hover:bg-emerald-950/10"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald-950/5 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-emerald-950 transition hover:bg-emerald-950/10"
           >
-            ← Volver al inicio
+            <MorphIcon icon={ArrowLeft} size={13} color="currentColor" /> Volver al inicio
           </Link>
         </div>
       </div>

@@ -1,14 +1,3 @@
-/**
- * Datos de las 7 provincias de Apurímac: lugares turísticos con coordenadas,
- * gastronomía, agricultura y vestimenta típica.
- *
- * FOTOS (las subes tú manualmente):
- *   public/img/provincias/<provincia-slug>/<lugar-id>/1.jpg, 2.jpg, ...
- * Ej.: public/img/provincias/abancay/ampay/1.jpg
- * El carrusel muestra automáticamente todas las fotos listadas en `imagenes`.
- * Si un lugar aún no tiene fotos, se muestra el logo como marcador temporal.
- */
-
 export type TipoLugar =
   | "arqueologico"
   | "natural"
@@ -27,24 +16,19 @@ export const TIPO_LABEL: Record<TipoLugar, string> = {
 };
 
 export interface Lugar {
-  /** slug único, usado también como nombre de carpeta de fotos */
   id: string;
   nombre: string;
   distrito: string;
   tipo: TipoLugar;
   descripcion: string;
-  /** [longitud, latitud] */
   coords: [number, number];
-  /** "exacta" = verificada en fuente oficial · "aproximada" = validar en campo */
   precision: "exacta" | "aproximada";
-  /** rutas públicas de fotos, ej. "/img/provincias/abancay/ampay/1.jpg" */
   imagenes: string[];
 }
 
 export interface FichaItem {
   nombre: string;
   descripcion: string;
-  /** foto opcional, ej. "/img/provincias/abancay/gastronomia/tallarin.jpg" */
   imagen?: string;
 }
 
@@ -52,7 +36,6 @@ export interface Provincia {
   slug: string;
   nombre: string;
   capital: string;
-  /** color del marcador y acentos en la ficha */
   color: string;
   resumen: string;
   lugares: Lugar[];

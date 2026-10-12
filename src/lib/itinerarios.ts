@@ -28,7 +28,6 @@ export interface DiaItinerario {
 export interface LugarMapaRef {
   provinciaSlug: string;
   lugarId: string;
-  /** Día del cronograma en el que aparece (opcional). */
   dia?: number;
 }
 
@@ -37,7 +36,6 @@ export interface Itinerario {
   nombre: string;
   corto: string;
   duracion: string;
-  /** Aviso visible cuando la duración no está cerrada (circuito Sur). */
   avisoDuracion?: string;
   base?: string;
   destinos: string[];

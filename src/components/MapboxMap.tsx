@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Map as MapIcon, Mountain, Satellite } from "lucide";
+import { MorphIcon } from "./MorphIcon";
 import { INITIAL_VIEW, MAPBOX_TOKEN } from "../lib/mapbox";
 import {
   LUGARES,
@@ -11,6 +13,24 @@ import {
   type LugarEnriquecido,
   type TipoLugar,
 } from "../lib/provincias";
+
+type ModoBase = "mapa" | "satelite" | "relieve";
+
+const ESTILOS: Record<ModoBase, { url: string; label: string }> = {
+  mapa: { url: "mapbox://styles/mapbox/outdoors-v12", label: "Mapa" },
+  satelite: {
+    url: "mapbox://styles/mapbox/satellite-streets-v12",
+    label: "Satélite",
+  },
+  // Relieve 3D: mismo estilo topográfico + terreno extruido, pitch y cielo.
+  relieve: { url: "mapbox://styles/mapbox/outdoors-v12", label: "Relieve 3D" },
+};
+
+const MODOS: { id: ModoBase; icon: typeof MapIcon }[] = [
+  { id: "mapa", icon: MapIcon },
+  { id: "satelite", icon: Satellite },
+  { id: "relieve", icon: Mountain },
+];
 
 function lugaresFiltrados(
   provincia: string | null,
@@ -41,7 +61,6 @@ function lugaresGeoSource(
   };
 }
 
-// Calcula [minLng, minLat, maxLng, maxLat] recorriendo las coordenadas.
 function bboxOf(geojson: GeoJSON.FeatureCollection): [number, number, number, number] {
   let minLng = Infinity;
   let minLat = Infinity;
@@ -83,13 +102,9 @@ function bboxDeProvincia(slug: string): [[number, number], [number, number]] | n
 }
 
 interface MapboxMapProps {
-  /** slug de provincia para volar hacia ella (página /provincias) */
   foco?: string | null;
-  /** filtra los marcadores por provincia (null = todas) */
   filtroProvincia?: string | null;
-  /** filtra los marcadores por tipo de lugar (null/vacío = todos) */
   filtroTipos?: TipoLugar[] | null;
-  /** se llama al tocar un marcador de lugar */
   onSelectLugar?: (lugar: LugarEnriquecido) => void;
   mostrarLeyenda?: boolean;
 }
@@ -104,96 +119,70 @@ export default function MapboxMap({
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const onSelectRef = useRef(onSelectLugar);
-  onSelectRef.current = onSelectLugar;
-  const [error, setError] = useState<string | null>(null);
+  const regionRef = useRef<GeoJSON.FeatureCollection | null>(null);
+  const provinciasRef = useRef<GeoJSON.FeatureCollection | null>(null);
+  const filtrosRef = useRef({ filtroProvincia, filtroTipos });
+  const modoRef = useRef<ModoBase>("mapa");
+  const inicializadoRef = useRef(false);
 
-  // Vuelo hacia la provincia enfocada (sin recrear el mapa).
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map || !foco) return;
-    const bbox = bboxDeProvincia(foco);
-    if (!bbox) return;
-    const volar = () =>
-      map.fitBounds(bbox, { padding: 50, duration: 1200, maxZoom: 9.5 });
-    if (map.loaded()) volar();
-    else map.once("load", volar);
-  }, [foco]);
+  const [modo, setModo] = useState<ModoBase>("mapa");
+  const [error, setError] = useState<string | null>(() =>
+    !MAPBOX_TOKEN ? "Falta el token de Mapbox (NEXT_PUBLIC_MAPBOX_TOKEN)." : null
+  );
 
-  // Re-filtra los marcadores sin recrear el mapa.
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
-    const aplicar = () => {
-      const src = map.getSource("lugares") as mapboxgl.GeoJSONSource | undefined;
-      src?.setData(lugaresGeoSource(filtroProvincia, filtroTipos));
-    };
-    if (map.loaded() && map.getSource("lugares")) aplicar();
-    else map.once("load", aplicar);
+    onSelectRef.current = onSelectLugar;
+  }, [onSelectLugar]);
+
+  useEffect(() => {
+    filtrosRef.current = { filtroProvincia, filtroTipos };
   }, [filtroProvincia, filtroTipos]);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    modoRef.current = modo;
+  }, [modo]);
 
-    if (!MAPBOX_TOKEN) {
-      setError("Falta el token de Mapbox (NEXT_PUBLIC_MAPBOX_TOKEN).");
-      return;
+  // Añade (o repone) las fuentes y capas propias del proyecto tras cada style.load.
+  const agregarCapasProyecto = (map: mapboxgl.Map) => {
+    const region = regionRef.current;
+    const provincias = provinciasRef.current;
+    const { filtroProvincia: fp, filtroTipos: ft } = filtrosRef.current;
+
+    if (region && !map.getSource("apurimac-region")) {
+      map.addSource("apurimac-region", { type: "geojson", data: region });
     }
-
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-
-    const map = new mapboxgl.Map({
-      container: containerRef.current,
-      style: "mapbox://styles/mapbox/outdoors-v12",
-      center: [INITIAL_VIEW.longitude, INITIAL_VIEW.latitude],
-      zoom: INITIAL_VIEW.zoom,
-    });
-    mapRef.current = map;
-
-    map.addControl(new mapboxgl.NavigationControl(), "top-right");
-
-    map.on("load", async () => {
-      try {
-        const [regionRes, provRes] = await Promise.all([
-          fetch("/geo/apurimac-region.geojson"),
-          fetch("/geo/apurimac-provincias.geojson"),
-        ]);
-        if (!regionRes.ok || !provRes.ok) throw new Error("geojson");
-        const region = (await regionRes.json()) as GeoJSON.FeatureCollection;
-        const provincias = (await provRes.json()) as GeoJSON.FeatureCollection;
-
-        // 1 · Relleno de la región Apurímac
-        map.addSource("apurimac-region", { type: "geojson", data: region });
+    if (region) {
+      if (!map.getLayer("apurimac-fill")) {
         map.addLayer({
           id: "apurimac-fill",
           type: "fill",
           source: "apurimac-region",
-          paint: {
-            "fill-color": "#047857",
-            "fill-opacity": 0.22,
-          },
+          paint: { "fill-color": "#047857", "fill-opacity": 0.22 },
         });
-        // 2 · Límite territorial de la región (trazo grueso)
+      }
+      if (!map.getLayer("apurimac-outline")) {
         map.addLayer({
           id: "apurimac-outline",
           type: "line",
           source: "apurimac-region",
-          paint: {
-            "line-color": "#065f46",
-            "line-width": 3.5,
-          },
+          paint: { "line-color": "#065f46", "line-width": 3.5 },
         });
+      }
+    }
 
-        // 3 · Provincias: relleno sutil + límites internos
-        map.addSource("apurimac-provincias", { type: "geojson", data: provincias });
+    if (provincias && !map.getSource("apurimac-provincias")) {
+      map.addSource("apurimac-provincias", { type: "geojson", data: provincias });
+    }
+    if (provincias) {
+      if (!map.getLayer("provincias-fill")) {
         map.addLayer({
           id: "provincias-fill",
           type: "fill",
           source: "apurimac-provincias",
-          paint: {
-            "fill-color": "#10b981",
-            "fill-opacity": 0.12,
-          },
+          paint: { "fill-color": "#10b981", "fill-opacity": 0.12 },
         });
+      }
+      if (!map.getLayer("provincias-outline")) {
         map.addLayer({
           id: "provincias-outline",
           type: "line",
@@ -204,7 +193,8 @@ export default function MapboxMap({
             "line-dasharray": [2, 1.5],
           },
         });
-        // 4 · Nombre de cada provincia
+      }
+      if (!map.getLayer("provincias-labels")) {
         map.addLayer({
           id: "provincias-labels",
           type: "symbol",
@@ -220,47 +210,198 @@ export default function MapboxMap({
             "text-halo-width": 2,
           },
         });
+      }
+    }
 
-        // 5 · Marcadores de lugares turísticos (todos, color por provincia)
-        const lugaresGeo = lugaresGeoSource(filtroProvincia, filtroTipos);
-        map.addSource("lugares", { type: "geojson", data: lugaresGeo });
+    if (!map.getSource("lugares")) {
+      map.addSource("lugares", {
+        type: "geojson",
+        data: lugaresGeoSource(fp, ft),
+      });
+    } else {
+      (map.getSource("lugares") as mapboxgl.GeoJSONSource).setData(
+        lugaresGeoSource(fp, ft)
+      );
+    }
+    if (!map.getLayer("lugares")) {
+      map.addLayer({
+        id: "lugares",
+        type: "circle",
+        source: "lugares",
+        paint: {
+          "circle-color": ["get", "color"],
+          "circle-radius": 7,
+          "circle-stroke-color": "#ffffff",
+          "circle-stroke-width": 2.5,
+        },
+      });
+    }
+  };
+
+  const aplicarRelieve = (map: mapboxgl.Map, m: ModoBase) => {
+    if (m === "relieve") {
+      if (!map.getSource("mapbox-dem")) {
+        map.addSource("mapbox-dem", {
+          type: "raster-dem",
+          url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+          tileSize: 512,
+          maxzoom: 14,
+        });
+      }
+      map.setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
+      if (!map.getLayer("sky")) {
         map.addLayer({
-          id: "lugares",
-          type: "circle",
-          source: "lugares",
+          id: "sky",
+          type: "sky",
           paint: {
-            "circle-color": ["get", "color"],
-            "circle-radius": 7,
-            "circle-stroke-color": "#ffffff",
-            "circle-stroke-width": 2.5,
+            "sky-type": "atmosphere",
+            "sky-atmosphere-sun": [0.0, 0.0],
+            "sky-atmosphere-sun-intensity": 15,
           },
         });
+      }
+      map.easeTo({ pitch: 60, bearing: -15, duration: 1000 });
+    } else {
+      map.setTerrain(null);
+      try {
+        if (map.getLayer("sky")) map.removeLayer("sky");
+      } catch {
+        /* la capa puede no existir tras un cambio de estilo */
+      }
+      map.easeTo({ pitch: 0, bearing: 0, duration: 800 });
+    }
+  };
 
-        map.on("click", "lugares", (e) => {
-          const f = e.features?.[0];
-          const id = f?.properties?.id as string | undefined;
-          if (!id) return;
-          const [provSlug, lugarId] = id.split(":");
-          const prov = provinciaPorSlug(provSlug);
-          const base = prov?.lugares.find((l) => l.id === lugarId);
-          if (base && prov) {
-            onSelectRef.current?.({
-              ...base,
-              provincia: prov.nombre,
-              provinciaSlug: prov.slug,
-              color: prov.color,
+  const engancharInteracciones = (map: mapboxgl.Map) => {
+    // Evita duplicar listeners tras cada cambio de estilo.
+    try {
+      (map as unknown as { off: (...a: unknown[]) => void }).off("click", "lugares");
+    } catch {
+      /* sin listeners previos */
+    }
+    map.on("click", "lugares", (e) => {
+      const f = e.features?.[0];
+      const id = f?.properties?.id as string | undefined;
+      if (!id) return;
+      const [provSlug, lugarId] = id.split(":");
+      const prov = provinciaPorSlug(provSlug);
+      const base = prov?.lugares.find((l) => l.id === lugarId);
+      if (base && prov) {
+        onSelectRef.current?.({
+          ...base,
+          provincia: prov.nombre,
+          provinciaSlug: prov.slug,
+          color: prov.color,
+        });
+      }
+    });
+    map.on("mouseenter", "lugares", () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", "lugares", () => {
+      map.getCanvas().style.cursor = "";
+    });
+  };
+
+  // Vuelo a provincia enfocada.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !foco || !inicializadoRef.current) return;
+    const bbox = bboxDeProvincia(foco);
+    if (!bbox) return;
+    const volar = () =>
+      map.fitBounds(bbox, { padding: 50, duration: 1200, maxZoom: 9.5 });
+    if (map.loaded()) volar();
+    else map.once("load", volar);
+  }, [foco]);
+
+  // Refiltrado de puntos.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !inicializadoRef.current) return;
+    const src = map.getSource("lugares") as mapboxgl.GeoJSONSource | undefined;
+    if (src && map.isStyleLoaded()) {
+      src.setData(lugaresGeoSource(filtroProvincia, filtroTipos));
+    }
+  }, [filtroProvincia, filtroTipos]);
+
+  // Cambio de capa base.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !inicializadoRef.current) return;
+    map.setStyle(ESTILOS[modo].url);
+    map.once("styledata", () => {
+      const esperar = () => {
+        if (!map.isStyleLoaded()) {
+          window.setTimeout(esperar, 100);
+          return;
+        }
+        agregarCapasProyecto(map);
+        engancharInteracciones(map);
+        aplicarRelieve(map, modoRef.current);
+      };
+      esperar();
+    });
+  }, [modo]);
+
+  // Creación del mapa (una sola vez).
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return;
+    if (!MAPBOX_TOKEN) return;
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+
+    const map = new mapboxgl.Map({
+      container: containerRef.current,
+      style: ESTILOS.mapa.url,
+      center: [INITIAL_VIEW.longitude, INITIAL_VIEW.latitude],
+      zoom: INITIAL_VIEW.zoom,
+      pitch: 0,
+      maxPitch: 85,
+      dragRotate: true,
+      touchPitch: true,
+    });
+    mapRef.current = map;
+
+    map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+
+    map.on("style.load", () => {
+      // Cada style.load (inicial + cada setStyle) repone terreno si toca.
+      if (modoRef.current === "relieve") {
+        // El DEM debe reañadirse porque setStyle lo borra.
+        if (!map.getSource("mapbox-dem")) {
+          try {
+            map.addSource("mapbox-dem", {
+              type: "raster-dem",
+              url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+              tileSize: 512,
+              maxzoom: 14,
             });
+          } catch {
+            /* ya existe */
           }
-        });
-        map.on("mouseenter", "lugares", () => {
-          map.getCanvas().style.cursor = "pointer";
-        });
-        map.on("mouseleave", "lugares", () => {
-          map.getCanvas().style.cursor = "";
-        });
+        }
+        map.setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
+      }
+    });
 
-        // 6 · Encuadre: toda Apurímac al inicio
-        const [w, s, e, n] = bboxOf(region);
+    map.on("load", async () => {
+      try {
+        const [regionRes, provRes] = await Promise.all([
+          fetch("/geo/apurimac-region.geojson"),
+          fetch("/geo/apurimac-provincias.geojson"),
+        ]);
+        if (!regionRes.ok || !provRes.ok) throw new Error("geojson");
+        regionRef.current =
+          (await regionRes.json()) as GeoJSON.FeatureCollection;
+        provinciasRef.current =
+          (await provRes.json()) as GeoJSON.FeatureCollection;
+
+        agregarCapasProyecto(map);
+        engancharInteracciones(map);
+        inicializadoRef.current = true;
+
+        const [w, s, e, n] = bboxOf(regionRef.current);
         map.fitBounds(
           [
             [w, s],
@@ -269,11 +410,10 @@ export default function MapboxMap({
           { padding: 40, duration: 1200 }
         );
       } catch {
-        // Si falla el GeoJSON, el mapa base + marcador siguen visibles.
+        setError("No se pudieron cargar los límites de Apurímac.");
       }
     });
 
-    // Marcador en Abancay, Apurímac
     new mapboxgl.Marker({ color: "#e11d48" })
       .setLngLat([INITIAL_VIEW.longitude, INITIAL_VIEW.latitude])
       .setPopup(
@@ -290,6 +430,7 @@ export default function MapboxMap({
     });
 
     return () => {
+      inicializadoRef.current = false;
       mapRef.current = null;
       map.remove();
     };
@@ -309,6 +450,41 @@ export default function MapboxMap({
         ref={containerRef}
         className="h-[420px] w-full overflow-hidden rounded-xl border border-zinc-200 shadow-sm"
       />
+      {/* Selector de capa base: Mapa · Satélite · Relieve 3D */}
+      <div
+        role="group"
+        aria-label="Tipo de mapa"
+        className="absolute left-3 top-3 z-10 flex gap-1 rounded-full bg-emerald-950/70 p-1 shadow-lg backdrop-blur"
+      >
+        {MODOS.map((m) => {
+          const activo = modo === m.id;
+          return (
+            <button
+              key={m.id}
+              onClick={() => setModo(m.id)}
+              aria-pressed={activo}
+              title={ESTILOS[m.id].label}
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] transition ${
+                activo
+                  ? "bg-white text-emerald-950"
+                  : "text-white/75 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              <MorphIcon
+                icon={m.icon}
+                size={14}
+                color={activo ? "#065f46" : "white"}
+              />
+              <span className="hidden sm:inline">{ESTILOS[m.id].label}</span>
+            </button>
+          );
+        })}
+      </div>
+      {modo === "relieve" && (
+        <div className="absolute right-3 top-3 z-10 max-w-[220px] rounded-2xl bg-emerald-950/70 px-3 py-2 text-[11px] leading-5 text-white/85 shadow-lg backdrop-blur">
+          Clic derecho + arrastrar para rotar · rueda para el zoom 3D
+        </div>
+      )}
       {mostrarLeyenda && (
         <div className="absolute bottom-3 left-3 z-10 flex max-w-[calc(100%-1.5rem)] flex-wrap gap-x-3 gap-y-1 rounded-2xl bg-white/85 px-4 py-2.5 shadow-lg backdrop-blur sm:max-w-[70%]">
           {PROVINCIAS.map((p) => (

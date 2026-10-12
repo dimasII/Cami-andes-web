@@ -11,7 +11,6 @@ interface RevealProps {
   y?: number;
 }
 
-/** Aparición suave al hacer scroll (GSAP + ScrollTrigger). */
 export default function Reveal({
   children,
   className,

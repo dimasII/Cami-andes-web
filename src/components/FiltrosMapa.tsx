@@ -3,6 +3,7 @@
 import { useState } from "react";
 import {
   Binoculars,
+  Check,
   ChevronDown,
   Church,
   Landmark,
@@ -53,15 +54,11 @@ interface FiltrosMapaProps {
   tipos: TipoLugar[];
   onToggleTipo: (t: TipoLugar) => void;
   onLimpiarTipos: () => void;
-  /** en el inicio solo se filtra el mapa (región + tipo) */
   mostrarContenido?: boolean;
 }
 
 type Abierto = "region" | "contenido" | "tipos" | null;
 
-/**
- * Filtros desplegables con iconos: 1) región, 2) contenido, 3) tipo de lugar.
- */
 export default function FiltrosMapa({
   provincia,
   onProvincia,
@@ -184,11 +181,11 @@ export default function FiltrosMapa({
                     className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-emerald-950 transition hover:bg-emerald-950/5"
                   >
                     <span
-                      className={`grid h-5 w-5 place-items-center rounded-md border text-[11px] text-white ${
+                      className={`grid h-5 w-5 place-items-center rounded-md border text-white ${
                         activo ? "border-emerald-700 bg-emerald-700" : "border-emerald-950/25"
                       }`}
                     >
-                      {activo ? "✓" : ""}
+                      {activo ? <MorphIcon icon={Check} size={13} color="white" /> : null}
                     </span>
                     <MorphIcon icon={TIPO_ICONS[t]} size={15} color={VERDE} />
                     {TIPO_LABEL[t]}

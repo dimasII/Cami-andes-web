@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeft } from "lucide";
 import Reveal from "@/components/Reveal";
+import { MorphIcon } from "@/components/MorphIcon";
 import { TarjetaItinerario } from "@/components/itinerarios";
 import { ITINERARIOS } from "@/lib/itinerarios";
 
@@ -56,9 +58,9 @@ export default function ItinerariosPage() {
         <div className="mt-16 text-center">
           <Link
             href="/"
-            className="inline-block rounded-full bg-emerald-950/5 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-emerald-950 transition hover:bg-emerald-950/10 focus-visible:outline-2 focus-visible:outline-emerald-700"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald-950/5 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-emerald-950 transition hover:bg-emerald-950/10 focus-visible:outline-2 focus-visible:outline-emerald-700"
           >
-            ← Volver al inicio
+            <MorphIcon icon={ArrowLeft} size={13} color="currentColor" /> Volver al inicio
           </Link>
         </div>
       </div>

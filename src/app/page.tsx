@@ -157,8 +157,8 @@ export default function Home() {
                   <p className="mt-5 text-base leading-8 text-emerald-950/70">
                     {c.desc}
                   </p>
-                  <span className="mt-auto inline-block pt-6 text-[11px] uppercase tracking-[0.24em] text-emerald-800">
-                    Ver en provincias →
+                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-[11px] uppercase tracking-[0.24em] text-emerald-800">
+                    Ver en provincias <MorphIcon icon={ArrowRight} size={13} color="currentColor" />
                   </span>
                 </Link>
               </Reveal>
@@ -196,16 +196,10 @@ export default function Home() {
                   <div className="grid h-14 w-14 place-items-center rounded-full bg-emerald-900/10">
                     <MorphIcon icon={s.icon} size={26} color="var(--emerald)" />
                   </div>
-                  <div className="mt-8 text-[11px] uppercase tracking-[0.28em] text-emerald-900/90">
-                    {s.tag}
-                  </div>
+                  <div className="mt-8 text-[11px] uppercase tracking-[0.28em] text-emerald-900/90">{s.tag}</div>
                   <h3 className="serif mt-4 text-4xl leading-[.95]">{s.title}</h3>
-                  <p className="mt-5 text-base leading-8 text-emerald-950/70">
-                    {s.desc}
-                  </p>
-                  <span className="mt-auto inline-block pt-6 text-[11px] uppercase tracking-[0.24em] text-emerald-800">
-                    Entrar →
-                  </span>
+                  <p className="mt-5 text-base leading-8 text-emerald-950/70">{s.desc}</p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-[11px] uppercase tracking-[0.24em] text-emerald-800">Entrar <MorphIcon icon={ArrowRight} size={13} color="currentColor" /></span>
                 </Link>
               </Reveal>
             ))}
@@ -217,13 +211,8 @@ export default function Home() {
       <section className="ascend-light relative overflow-hidden px-4 sm:px-8 pb-36">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
-              <MorphIcon icon={MapIcon} size={18} color="var(--emerald)" />
-              Territorio
-            </div>
-            <h2 className="serif text-[clamp(2.5rem,6vw,5rem)] leading-[.9] text-emerald-950">
-              De Apurímac a Galicia.
-            </h2>
+            <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"><MorphIcon icon={MapIcon} size={18} color="var(--emerald)" />Territorio</div>
+            <h2 className="serif text-[clamp(2.5rem,6vw,5rem)] leading-[.9] text-emerald-950">De Apurímac</h2>
             <p className="mb-8 mt-4 max-w-2xl text-lg leading-9 text-emerald-950/70">
               Explora la región Apurímac resaltada en el mapa, con los límites de
               sus 7 provincias: Abancay, Andahuaylas, Antabamba, Aymaraes,
@@ -269,19 +258,8 @@ export default function Home() {
             avances del proyecto.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contacto/"
-              className="mist-button inline-flex items-center gap-3 px-8 py-5 text-[11px] uppercase tracking-[0.24em]"
-            >
-              Contactar
-              <MorphIcon icon={ArrowRight} size={16} color="white" />
-            </Link>
-            <Link
-              href="/blog/"
-              className="rounded-full bg-white/8 px-8 py-5 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-3xl transition hover:bg-white/14"
-            >
-              Leer el blog
-            </Link>
+            <Link href="/contacto/" className="mist-button inline-flex items-center gap-3 px-8 py-5 text-[11px] uppercase tracking-[0.24em]">Contactar<MorphIcon icon={ArrowRight} size={16} color="white" /></Link>
+            <Link href="/blog/" className="rounded-full bg-white/8 px-8 py-5 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-3xl transition hover:bg-white/14">Leer el blog</Link>
           </div>
         </Reveal>
       </section>

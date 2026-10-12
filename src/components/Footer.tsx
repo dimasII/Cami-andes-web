@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide";
+import { MorphIcon } from "./MorphIcon";
 
 export default function Footer() {
   return (
@@ -46,7 +48,7 @@ export default function Footer() {
               <div className="text-[10px] uppercase tracking-[0.28em] text-white/40">
                 Participa
               </div>
-              <div className="mt-4 text-3xl font-semibold">Escríbenos →</div>
+              <div className="mt-4 inline-flex items-center gap-2 text-3xl font-semibold">Escríbenos <MorphIcon icon={ArrowRight} size={24} color="white" /></div>
             </Link>
           </div>
         </div>

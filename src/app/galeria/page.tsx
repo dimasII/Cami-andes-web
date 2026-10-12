@@ -1,10 +1,20 @@
+import {
+  Church,
+  Laptop,
+  Mountain,
+  PartyPopper,
+  Soup,
+  Sprout,
+} from "lucide";
+import { MorphIcon } from "../../components/MorphIcon";
+
 const fotos = [
-  { t: "Camino de Santiago", d: "Galicia, España", emoji: "⛪" },
-  { t: "Valle del Apurímac", d: "Perú", emoji: "🏔️" },
-  { t: "Encuentro virtual COIL", d: "Sesiones online", emoji: "💻" },
-  { t: "Fiesta local", d: "Cultura viva", emoji: "🎉" },
-  { t: "Gastronomía", d: "Sabores de ambos mundos", emoji: "🍲" },
-  { t: "Naturaleza", d: "Paisajes que caminan", emoji: "🌿" },
+  { t: "Camino de Santiago", d: "Galicia, España", icon: Church },
+  { t: "Valle del Apurímac", d: "Perú", icon: Mountain },
+  { t: "Encuentro virtual COIL", d: "Sesiones online", icon: Laptop },
+  { t: "Fiesta local", d: "Cultura viva", icon: PartyPopper },
+  { t: "Gastronomía", d: "Sabores de ambos mundos", icon: Soup },
+  { t: "Naturaleza", d: "Paisajes que caminan", icon: Sprout },
 ];
 
 export default function Galeria() {
@@ -21,8 +31,8 @@ export default function Galeria() {
             key={f.t}
             className="overflow-hidden rounded-2xl border shadow-sm"
           >
-            <div className="flex h-40 items-center justify-center bg-zinc-100 text-5xl dark:bg-zinc-900">
-              {f.emoji}
+            <div className="flex h-40 items-center justify-center bg-zinc-100 text-emerald-900 dark:bg-zinc-900 dark:text-emerald-100">
+              <MorphIcon icon={f.icon} size={44} color="currentColor" />
             </div>
             <figcaption className="p-4">
               <p className="font-semibold">{f.t}</p>

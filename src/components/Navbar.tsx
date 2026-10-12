@@ -19,8 +19,6 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  // Cierra con Escape o al pulsar fuera del menú.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
