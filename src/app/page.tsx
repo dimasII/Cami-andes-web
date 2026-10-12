@@ -3,31 +3,69 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MorphIcon } from "../components/MorphIcon";
-import { ArrowRight, Brain, Footprints, Map as MapIcon, Users } from "lucide";
+import { ArrowRight, Bird, Images, Landmark, Map as MapIcon, Mountain, Newspaper, Route, Users } from "lucide";
 import MapboxMap from "../components/MapboxMap";
 import PanelLugar from "../components/PanelLugar";
 import FiltrosMapa, { type Contenido } from "../components/FiltrosMapa";
 import Reveal from "../components/Reveal";
 import type { LugarEnriquecido, TipoLugar } from "../lib/provincias";
 
-const pilares = [
-  {
-    icon: Footprints,
-    tag: "Camino",
-    title: "El caminar como práctica cultural",
-    desc: "Peregrinaje jacobeo y qhapaq ñan andino: dos formas de habitar el territorio a pie.",
-  },
-  {
-    icon: Brain,
-    tag: "Memoria",
-    title: "Historias que conectan",
-    desc: "Relatos orales, archivos y memorias que tienden puentes entre Galicia y Apurímac.",
-  },
+const secciones = [
   {
     icon: Users,
-    tag: "Comunidad",
-    title: "Crear juntos",
-    desc: "Estudiantes y docentes creando a ambos lados del Atlántico.",
+    tag: "Nosotros",
+    title: "Quiénes somos",
+    desc: "El equipo detrás de Camiñandes y su trabajo en Apurímac.",
+    href: "/contacto/",
+  },
+  {
+    icon: MapIcon,
+    tag: "Provincias",
+    title: "Apurímac provincia por provincia",
+    desc: "Las 7 provincias en el mapa: lugares, gastronomía, agricultura y vestimenta.",
+    href: "/provincias/",
+  },
+  {
+    icon: Route,
+    tag: "Itinerarios",
+    title: "4 rutas culturales",
+    desc: "Abancay, Andahuaylas y los circuitos norte y sur, día a día.",
+    href: "/itinerarios/",
+  },
+  {
+    icon: Images,
+    tag: "Galería",
+    title: "Fotos de Apurímac",
+    desc: "Caminos, paisajes y fiestas de la región.",
+    href: "/galeria/",
+  },
+  {
+    icon: Newspaper,
+    tag: "Blog",
+    title: "Diario del proyecto",
+    desc: "Avances, relatos y resultados del trabajo en Apurímac.",
+    href: "/blog/",
+  },
+];
+
+const records = [
+  {
+    icon: Mountain,
+    tag: "Lo más alto",
+    title: "Nevado Ampay · 5 235 m",
+    desc: "El techo del Santuario Nacional de Ampay, entre bosques de intimpas y lagunas de altura.",
+  },
+  {
+    icon: Bird,
+    tag: "Lo más profundo",
+    title: "Cañón del Apurímac · 4 691 m",
+    desc: "Uno de los cañones más profundos del planeta: miradores, vuelo de cóndores y puerta a Choquequirao.",
+  },
+  {
+    icon: Landmark,
+    tag: "El imperdible",
+    title: "Choquequirao, la «cuna de oro»",
+    desc: "Ciudadela inca entre los Andes y la ceja de selva, en caminata de 2 días desde Cachora.",
   },
 ];
 
@@ -87,23 +125,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PILARES */}
+      {/* RÉCORDS DE APURÍMAC */}
       <section className="ascend-light relative overflow-hidden px-8 py-36">
         <div className="mx-auto max-w-[1700px]">
           <Reveal className="max-w-4xl">
             <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
-              Tres pilares
+              Apurímac en sus extremos
             </div>
             <h2 className="serif mt-6 text-[clamp(2.5rem,6vw,5.5rem)] leading-[.9] text-emerald-950">
-              Humedad moldeada por la altura.
+              Lo más alto, lo más profundo, lo imperdible.
             </h2>
           </Reveal>
 
           <div className="mt-20 grid gap-8 md:grid-cols-3">
-            {pilares.map((c, i) => (
-              <Reveal key={c.tag} delay={i * 0.12}>
-                <article
-                  className={`vapor p-10 text-emerald-950 ${
+            {records.map((c, i) => (
+              <Reveal key={c.tag} delay={i * 0.12} className="h-full">
+                <Link
+                  href="/provincias/"
+                  aria-label={`${c.tag}: ${c.title}. Ver en provincias`}
+                  className={`vapor flex h-full flex-col p-10 text-emerald-950 transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
                     i % 2 === 0 ? "organic" : "leaf"
                   }`}
                 >
@@ -117,7 +157,56 @@ export default function Home() {
                   <p className="mt-5 text-base leading-8 text-emerald-950/70">
                     {c.desc}
                   </p>
-                </article>
+                  <span className="mt-auto inline-block pt-6 text-[11px] uppercase tracking-[0.24em] text-emerald-800">
+                    Ver en provincias →
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPLORA — la información principal, con redirección a cada sección */}
+      <section className="ascend-light relative overflow-hidden px-8 pb-36">
+        <div className="mx-auto max-w-[1700px]">
+          <Reveal className="max-w-4xl">
+            <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+              Explora
+            </div>
+            <h2 className="serif mt-6 text-[clamp(2.5rem,6vw,5.5rem)] leading-[.9] text-emerald-950">
+              Todo el proyecto, desde aquí.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-9 text-emerald-950/70">
+              Cada tarjeta resume una sección de la web y te lleva a su página
+              completa.
+            </p>
+          </Reveal>
+
+          <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {secciones.map((s, i) => (
+              <Reveal key={s.tag} delay={Math.min(i * 0.06, 0.2)} className="h-full">
+                <Link
+                  href={s.href}
+                  aria-label={`Ir a ${s.tag}: ${s.title}`}
+                  className={`vapor flex h-full flex-col p-10 text-emerald-950 transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
+                    i % 2 === 0 ? "organic" : "leaf"
+                  }`}
+                >
+                  <div className="grid h-14 w-14 place-items-center rounded-full bg-emerald-900/10">
+                    <MorphIcon icon={s.icon} size={26} color="var(--emerald)" />
+                  </div>
+                  <div className="mt-8 text-[11px] uppercase tracking-[0.28em] text-emerald-900/90">
+                    {s.tag}
+                  </div>
+                  <h3 className="serif mt-4 text-4xl leading-[.95]">{s.title}</h3>
+                  <p className="mt-5 text-base leading-8 text-emerald-950/70">
+                    {s.desc}
+                  </p>
+                  <span className="mt-auto inline-block pt-6 text-[11px] uppercase tracking-[0.24em] text-emerald-800">
+                    Entrar →
+                  </span>
+                </Link>
               </Reveal>
             ))}
           </div>

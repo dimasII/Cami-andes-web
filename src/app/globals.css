@@ -204,6 +204,21 @@ body::before {
   }
 }
 
+/* ——— Movimiento reducido ——— */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .condense,
+  .canopy {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
 /* ——— Mapa Mapbox dentro del estilo ——— */
 .map-shell {
   overflow: hidden;
