@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ItinerariosPage() {
   return (
-    <div className="px-8 pb-36 pt-36">
+    <div className="px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
@@ -38,7 +38,7 @@ export default function ItinerariosPage() {
         <Reveal delay={0.1}>
           <aside
             aria-label="Ruta combinada norte-sur"
-            className="mt-12 rounded-[2.5rem] border border-dashed border-emerald-900/25 bg-white/30 p-8 backdrop-blur sm:p-10"
+            className="mt-12 rounded-[2.5rem] border border-dashed border-emerald-900/25 bg-white/30 p-5 backdrop-blur sm:p-10"
           >
             <div className="inline-block rounded-full bg-emerald-950/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.24em] text-emerald-950">
               En desarrollo

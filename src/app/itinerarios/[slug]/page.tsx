@@ -37,7 +37,7 @@ export default async function ItinerarioDetalle({
   if (!it) notFound();
 
   return (
-    <div className="px-8 pb-36 pt-36">
+    <div className="px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <nav aria-label="Miga de pan" className="text-[11px] uppercase tracking-[0.24em] text-emerald-900/60">
@@ -81,7 +81,7 @@ export default async function ItinerarioDetalle({
         )}
 
         <Reveal delay={0.05}>
-          <dl className="vapor mt-10 grid gap-6 rounded-[2.5rem] p-8 text-emerald-950 sm:grid-cols-2 sm:p-12">
+          <dl className="vapor mt-10 grid gap-6 rounded-[2.5rem] p-5 text-emerald-950 sm:grid-cols-2 sm:p-12">
             <div>
               <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
                 Duración
@@ -136,7 +136,7 @@ export default async function ItinerarioDetalle({
             <Reveal>
               <section
                 aria-labelledby="recuerdo"
-                className="rounded-[2.5rem] border border-emerald-900/15 bg-white/40 p-8 backdrop-blur sm:p-12"
+                className="rounded-[2.5rem] border border-emerald-900/15 bg-white/40 p-5 backdrop-blur sm:p-12"
               >
                 <div className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
                   Recuerdo · propuesta no garantizada

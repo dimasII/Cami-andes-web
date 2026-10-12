@@ -100,7 +100,7 @@ export default function FiltrosMapa({
         {abierto === "region" && (
           <>
             <div className="fixed inset-0 z-10" onClick={() => setAbierto(null)} />
-            <div className="absolute left-0 top-full z-20 mt-2 w-56 overflow-hidden rounded-2xl bg-white shadow-xl">
+            <div className="absolute left-0 top-full z-20 mt-2 w-56 max-w-[calc(100vw-4rem)] overflow-hidden rounded-2xl bg-white shadow-xl">
               <button
                 onClick={() => { onProvincia(null); setAbierto(null); }}
                 className={`flex w-full items-center gap-2 px-4 py-3 text-left text-sm transition hover:bg-emerald-950/5 ${
@@ -143,7 +143,7 @@ export default function FiltrosMapa({
           {abierto === "contenido" && (
             <>
               <div className="fixed inset-0 z-10" onClick={() => setAbierto(null)} />
-              <div className="absolute left-0 top-full z-20 mt-2 w-56 overflow-hidden rounded-2xl bg-white shadow-xl">
+              <div className="absolute left-0 top-full z-20 mt-2 w-56 max-w-[calc(100vw-4rem)] overflow-hidden rounded-2xl bg-white shadow-xl">
                 {CONTENIDOS.map((c) => (
                   <button
                     key={c.id}
@@ -174,7 +174,7 @@ export default function FiltrosMapa({
         {abierto === "tipos" && (
           <>
             <div className="fixed inset-0 z-10" onClick={() => setAbierto(null)} />
-            <div className="absolute left-0 top-full z-20 mt-2 w-60 overflow-hidden rounded-2xl bg-white shadow-xl">
+            <div className="absolute right-0 top-full z-20 mt-2 w-60 max-w-[calc(100vw-4rem)] overflow-hidden sm:left-0 sm:right-auto rounded-2xl bg-white shadow-xl">
               {TIPOS.map((t) => {
                 const activo = tipos.includes(t);
                 return (

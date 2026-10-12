@@ -18,7 +18,7 @@ const posts = [
 
 export default function Blog() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-3xl px-5 pb-16 pt-32 sm:px-6 sm:pt-36">
       <h1 className="text-3xl font-bold">Blog del proyecto</h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-300">
         Diario de avances del COIL.

@@ -310,7 +310,7 @@ export default function MapboxMap({
         className="h-[420px] w-full overflow-hidden rounded-xl border border-zinc-200 shadow-sm"
       />
       {mostrarLeyenda && (
-        <div className="absolute bottom-3 left-3 z-10 flex max-w-[70%] flex-wrap gap-x-3 gap-y-1 rounded-2xl bg-white/85 px-4 py-2.5 shadow-lg backdrop-blur">
+        <div className="absolute bottom-3 left-3 z-10 flex max-w-[calc(100%-1.5rem)] flex-wrap gap-x-3 gap-y-1 rounded-2xl bg-white/85 px-4 py-2.5 shadow-lg backdrop-blur sm:max-w-[70%]">
           {PROVINCIAS.map((p) => (
             <span
               key={p.slug}

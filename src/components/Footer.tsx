@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer id="contacto-footer" className="ascend-deep earth relative overflow-hidden px-8 py-20 text-white">
+    <footer id="contacto-footer" className="ascend-deep earth relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20">
       <div className="moss-grid"></div>
 
       <div className="relative z-10 mx-auto max-w-[1700px]">
@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-[3rem] bg-white/6 p-8 backdrop-blur-3xl">
+            <div className="rounded-[3rem] bg-white/6 p-6 backdrop-blur-3xl sm:p-8">
               <div className="text-[10px] uppercase tracking-[0.28em] text-white/40">
                 Territorios
               </div>
@@ -41,7 +41,7 @@ export default function Footer() {
             </div>
             <Link
               href="/contacto/"
-              className="block rounded-[3rem] bg-white/6 p-8 backdrop-blur-3xl transition hover:bg-white/10"
+              className="block rounded-[3rem] bg-white/6 p-6 backdrop-blur-3xl sm:p-8 transition hover:bg-white/10"
             >
               <div className="text-[10px] uppercase tracking-[0.28em] text-white/40">
                 Participa

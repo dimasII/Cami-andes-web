@@ -41,7 +41,7 @@ export default function ProvinciasPage() {
   const verLugares = contenido === "todo" || contenido === "lugares";
 
   return (
-    <div className="px-8 pb-36 pt-36">
+    <div className="px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
@@ -86,7 +86,7 @@ export default function ProvinciasPage() {
             <Reveal key={p.slug} delay={Math.min(idx * 0.05, 0.2)}>
               <article className="vapor overflow-hidden rounded-[2.5rem] text-emerald-950">
                 <div className="h-2 w-full" style={{ backgroundColor: p.color }} />
-                <div className="p-8 sm:p-12">
+                <div className="p-5 sm:p-12">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
                       <div className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">

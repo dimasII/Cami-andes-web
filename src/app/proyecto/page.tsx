@@ -1,6 +1,6 @@
 export default function Proyecto() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-3xl px-5 pb-16 pt-32 sm:px-6 sm:pt-36">
       <h1 className="text-3xl font-bold">El proyecto</h1>
       <p className="mt-4 leading-7 text-zinc-600 dark:text-zinc-300">
         <strong>Camiñandes</strong> nace del encuentro entre estudiantes de

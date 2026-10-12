@@ -9,7 +9,7 @@ const fotos = [
 
 export default function Galeria() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
+    <div className="mx-auto max-w-5xl px-5 pb-16 pt-32 sm:px-6 sm:pt-36">
       <h1 className="text-3xl font-bold">Galería</h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-300">
         Sustituye estas tarjetas por tus fotos reales en{" "}

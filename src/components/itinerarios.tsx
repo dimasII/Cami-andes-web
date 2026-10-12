@@ -43,7 +43,7 @@ export function TarjetaItinerario({
             </span>
           </div>
         )}
-        <div className="flex flex-1 flex-col p-8 sm:p-10">
+        <div className="flex flex-1 flex-col p-5 sm:p-10">
           <div className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
             {itinerario.duracion}
           </div>
@@ -136,7 +136,7 @@ export function AntesDeViajar({ items }: { items: string[] }) {
   return (
     <section
       aria-labelledby="antes-de-viajar"
-      className="rounded-[2.5rem] bg-emerald-950 p-8 text-white sm:p-12"
+      className="rounded-[2.5rem] bg-emerald-950 p-5 text-white sm:p-12"
     >
       <div className="text-[11px] uppercase tracking-[0.28em] text-white/50">
         Condiciones

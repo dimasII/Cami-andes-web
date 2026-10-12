@@ -126,7 +126,7 @@ export default function Home() {
       </section>
 
       {/* RÉCORDS DE APURÍMAC */}
-      <section className="ascend-light relative overflow-hidden px-8 py-36">
+      <section className="ascend-light relative overflow-hidden px-4 sm:px-8 py-36">
         <div className="mx-auto max-w-[1700px]">
           <Reveal className="max-w-4xl">
             <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
@@ -143,7 +143,7 @@ export default function Home() {
                 <Link
                   href="/provincias/"
                   aria-label={`${c.tag}: ${c.title}. Ver en provincias`}
-                  className={`vapor flex h-full flex-col p-10 text-emerald-950 transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
+                  className={`vapor flex h-full flex-col p-6 sm:p-10 text-emerald-950 transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
                     i % 2 === 0 ? "organic" : "leaf"
                   }`}
                 >
@@ -168,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* EXPLORA — la información principal, con redirección a cada sección */}
-      <section className="ascend-light relative overflow-hidden px-8 pb-36">
+      <section className="ascend-light relative overflow-hidden px-4 sm:px-8 pb-36">
         <div className="mx-auto max-w-[1700px]">
           <Reveal className="max-w-4xl">
             <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
@@ -189,7 +189,7 @@ export default function Home() {
                 <Link
                   href={s.href}
                   aria-label={`Ir a ${s.tag}: ${s.title}`}
-                  className={`vapor flex h-full flex-col p-10 text-emerald-950 transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
+                  className={`vapor flex h-full flex-col p-6 sm:p-10 text-emerald-950 transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
                     i % 2 === 0 ? "organic" : "leaf"
                   }`}
                 >
@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* MAPA */}
-      <section className="ascend-light relative overflow-hidden px-8 pb-36">
+      <section className="ascend-light relative overflow-hidden px-4 sm:px-8 pb-36">
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
@@ -258,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="ascend-mid relative overflow-hidden px-8 py-32">
+      <section className="ascend-mid relative overflow-hidden px-4 sm:px-8 py-32">
         <div className="moss-grid"></div>
         <Reveal className="relative z-10 mx-auto max-w-4xl text-center">
           <h2 className="serif text-[clamp(2.5rem,6vw,5rem)] leading-[.9] text-white">
