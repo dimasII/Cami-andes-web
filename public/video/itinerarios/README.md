@@ -9,6 +9,10 @@ Sube aquí **un video por ruta**. Los nombres deben ser exactos (minúsculas y g
 | Circuito Norte | `circuito-norte.mp4` | `/video/itinerarios/circuito-norte.mp4` |
 | Circuito Sur | `circuito-sur.mp4` | `/video/itinerarios/circuito-sur.mp4` |
 
+**Estado:** `abancay.mp4` ya está subido y se reproduce en la ficha de Abancay.
+Las otras tres rutas siguen mostrando el marcador "Próximamente" hasta que
+subas sus archivos con esos nombres.
+
 Ruta completa en el proyecto:
 
 ```

@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MorphIcon } from "../components/MorphIcon";
-import { ArrowRight, Bird, Images, Landmark, Map as MapIcon, MountainSnow, Newspaper, Route, Users } from "lucide";
+import { ArrowRight, Bird, Landmark, Map as MapIcon, MountainSnow, Newspaper, Route, Users } from "lucide";
 import MapboxMap from "../components/MapboxMap";
 import PanelLugar from "../components/PanelLugar";
-import FiltrosMapa, { type Contenido } from "../components/FiltrosMapa";
+import FiltrosMapa from "../components/FiltrosMapa";
 import Reveal from "../components/Reveal";
 import type { LugarEnriquecido, TipoLugar } from "../lib/provincias";
 
@@ -16,7 +16,7 @@ const secciones = [
     tag: "Nosotros",
     title: "Quiénes somos",
     desc: "El equipo detrás de Camiñandes y su trabajo en Apurímac.",
-    href: "/contacto/",
+    href: "/contacto/#equipo",
     imagen: "/img/provincias/abancay/muralla-china/04.jpg",
     alt: "Caminantes en el mirador de la Muralla China, Apurímac",
     cta: "Conocer al equipo",
@@ -40,16 +40,6 @@ const secciones = [
     imagen: "/img/provincias/abancay/pachachaca/02.jpg",
     alt: "Puente colonial de Pachachaca sobre el río Apurímac",
     cta: "Ver rutas",
-  },
-  {
-    icon: Images,
-    tag: "Galería",
-    title: "Fotos de Apurímac",
-    desc: "Caminos, paisajes y fiestas de la región.",
-    href: "/galeria/",
-    imagen: "/img/provincias/andahuaylas/pampachiri/01.jpg",
-    alt: "Bosque de piedra de Pampachiri, Andahuaylas",
-    cta: "Ver galería",
   },
   {
     icon: Newspaper,
@@ -166,7 +156,7 @@ export default function Home() {
   const [seleccionado, setSeleccionado] = useState<LugarEnriquecido | null>(null);
   const [provincia, setProvincia] = useState<string | null>(null);
   const [tipos, setTipos] = useState<TipoLugar[]>([]);
-  const noopContenido = (_: Contenido) => {};
+  const noopContenido = () => {};
 
   return (
     <div>
@@ -211,10 +201,10 @@ export default function Home() {
               <MorphIcon icon={ArrowRight} size={16} color="white" />
             </Link>
             <Link
-              href="/galeria/"
+              href="/contacto/#equipo"
               className="rounded-full bg-white/8 px-8 py-5 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-3xl transition hover:bg-white/14"
             >
-              Ver galería
+              Conoce al equipo
             </Link>
           </div>
         </div>
@@ -267,7 +257,13 @@ export default function Home() {
                 item={s}
                 index={i}
                 delay={Math.min(i * 0.06, 0.2)}
-                className={`lg:col-span-2 ${i === 3 ? "lg:col-start-2" : ""}`}
+                className={`lg:col-span-2 ${
+                  secciones.length % 3 === 1 && i === secciones.length - 1
+                    ? "lg:col-start-3"
+                    : secciones.length % 3 === 2 && i === secciones.length - 2
+                      ? "lg:col-start-2"
+                      : ""
+                }`}
               />
             ))}
           </div>
@@ -325,7 +321,7 @@ export default function Home() {
             avances del proyecto.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/contacto/" className="mist-button inline-flex items-center gap-3 px-8 py-5 text-[11px] uppercase tracking-[0.24em]">Contactar<MorphIcon icon={ArrowRight} size={16} color="white" /></Link>
+            <Link href="/contacto/#contacto" className="mist-button inline-flex items-center gap-3 px-8 py-5 text-[11px] uppercase tracking-[0.24em]">Contactar<MorphIcon icon={ArrowRight} size={16} color="white" /></Link>
             <Link href="/blog/" className="rounded-full bg-white/8 px-8 py-5 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-3xl transition hover:bg-white/14">Leer el blog</Link>
           </div>
         </Reveal>

@@ -135,7 +135,14 @@ export const PROVINCIAS: Provincia[] = [
           "La 'cuna de oro', ciudadela inca entre los Andes y la ceja de selva. Se llega en trek de 2 días cruzando el cañón desde Capuliyoc.",
         coords: [-72.8747, -13.3936],
         precision: "exacta",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/abancay/choquequirao/01.webp",
+          "/img/provincias/abancay/choquequirao/02.jpg",
+          "/img/provincias/abancay/choquequirao/03.jpg",
+          "/img/provincias/abancay/choquequirao/04.webp",
+          "/img/provincias/abancay/choquequirao/05.webp",
+          "/img/provincias/abancay/choquequirao/06.webp",
+        ],
       },
       {
         id: "muralla-china",
@@ -146,7 +153,14 @@ export const PROVINCIAS: Provincia[] = [
           "Mirador de muros de piedra serpenteantes inspirado en la Gran Muralla China, frente al Cañón del Apurímac, en la ruta a Choquequirao.",
         coords: [-72.815, -13.485],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/abancay/muralla-china/01.jpg",
+          "/img/provincias/abancay/muralla-china/02.jpg",
+          "/img/provincias/abancay/muralla-china/03.png",
+          "/img/provincias/abancay/muralla-china/04.jpg",
+          "/img/provincias/abancay/muralla-china/05.jpg",
+          "/img/provincias/abancay/muralla-china/06.jpg",
+        ],
       },
       {
         id: "pachachaca",
@@ -157,7 +171,12 @@ export const PROVINCIAS: Provincia[] = [
           "Puente colonial de piedra sobre el río Pachachaca, joya de la arquitectura virreinal en el valle agrícola de Abancay.",
         coords: [-72.9, -13.625],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/abancay/pachachaca/01.jpg",
+          "/img/provincias/abancay/pachachaca/02.jpg",
+          "/img/provincias/abancay/pachachaca/03.jpg",
+          "/img/provincias/abancay/pachachaca/04.JPG",
+        ],
       },
     ],
     gastronomia: [
@@ -193,7 +212,14 @@ export const PROVINCIAS: Provincia[] = [
           "Una de las lagunas más grandes y bellas del Perú (728 ha, 3 200 m). Paseos en bote, pesca de trucha y pejerrey, avistamiento de aves y la 'pradera de los celajes' al atardecer.",
         coords: [-73.325, -13.6075],
         precision: "exacta",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/andahuaylas/pacucha/01.jpg",
+          "/img/provincias/andahuaylas/pacucha/02.jpg",
+          "/img/provincias/andahuaylas/pacucha/03.jpg",
+          "/img/provincias/andahuaylas/pacucha/04.jpg",
+          "/img/provincias/andahuaylas/pacucha/05.jpg",
+          "/img/provincias/andahuaylas/pacucha/06.jpg",
+        ],
       },
       {
         id: "sondor",
@@ -204,7 +230,13 @@ export const PROVINCIAS: Provincia[] = [
           "Centro ceremonial chanka e inca con la colina aterrazada de Muyumuyu. Cada 19 de junio escenifica el Sóndor Raymi.",
         coords: [-73.268884, -13.606301],
         precision: "exacta",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/andahuaylas/sondor/01.jpg",
+          "/img/provincias/andahuaylas/sondor/02.jpg",
+          "/img/provincias/andahuaylas/sondor/03.jpg",
+          "/img/provincias/andahuaylas/sondor/04.jpg",
+          "/img/provincias/andahuaylas/sondor/05.jpg",
+        ],
       },
       {
         id: "pampachiri",
@@ -215,7 +247,12 @@ export const PROVINCIAS: Provincia[] = [
           "Columnas volcánicas de hasta 20 m ('casas de los pitufos'), cerro Páncula y el géiser de Ronroxa. Origen: volcanes Sotaya y Jaruarazu.",
         coords: [-73.594, -14.178],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/andahuaylas/pampachiri/01.jpg",
+          "/img/provincias/andahuaylas/pampachiri/02.jpg",
+          "/img/provincias/andahuaylas/pampachiri/03.jpg",
+          "/img/provincias/andahuaylas/pampachiri/04.jpg",
+        ],
       },
       {
         id: "curamba",
@@ -226,7 +263,12 @@ export const PROVINCIAS: Provincia[] = [
           "Conjunto de andenerías y recintos asociados a la metalurgia y administración inca en la cuenca del Pampas.",
         coords: [-73.09, -13.69],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/andahuaylas/curamba/01.jpg",
+          "/img/provincias/andahuaylas/curamba/02.jpeg",
+          "/img/provincias/andahuaylas/curamba/03.jpg",
+          "/img/provincias/andahuaylas/curamba/04.jpg",
+        ],
       },
       {
         id: "huascatay",
@@ -237,7 +279,10 @@ export const PROVINCIAS: Provincia[] = [
           "El 'mirador de miradores' del cañón: desde los 3 500 m se ve la unión de los ríos Pampas y Apurímac y la 'Oreja de Perro'.",
         coords: [-73.31, -13.52],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/andahuaylas/huascatay/01.webp",
+          "/img/provincias/andahuaylas/huascatay/02.webp",
+        ],
       },
     ],
     gastronomia: [
@@ -273,7 +318,13 @@ export const PROVINCIAS: Provincia[] = [
           "Misteriosas formaciones rocosas de la puna antabambina, recurso turístico emergente de la provincia.",
         coords: [-72.8, -14.35],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/antabamba/huayllas/01.png",
+          "/img/provincias/antabamba/huayllas/02.jpg",
+          "/img/provincias/antabamba/huayllas/03.jpg",
+          "/img/provincias/antabamba/huayllas/04.jpg",
+          "/img/provincias/antabamba/huayllas/05.jpg",
+        ],
       },
       {
         id: "ccocho",
@@ -284,7 +335,11 @@ export const PROVINCIAS: Provincia[] = [
           "Ojos de agua cristalina a 3 500 m a orillas del río Ccocho (45 °C), con propiedades contra dolores articulares y reumatismo.",
         coords: [-72.76, -14.36],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/antabamba/ccocho/01.jpg",
+          "/img/provincias/antabamba/ccocho/02.jpg",
+          "/img/provincias/antabamba/ccocho/03.jpg",
+        ],
       },
       {
         id: "kilkata",
@@ -295,7 +350,11 @@ export const PROVINCIAS: Provincia[] = [
           "A 3 800 m en la cuenca del río Totora: pozas comunitarias y un géiser natural de hasta 70 °C donde los visitantes cocinan huevos y carne.",
         coords: [-72.9, -14.28],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/antabamba/kilkata/01.webp",
+          "/img/provincias/antabamba/kilkata/02.jpg",
+          "/img/provincias/antabamba/kilkata/03.jpg",
+        ],
       },
       {
         id: "maucallacta-antabamba",
@@ -306,7 +365,12 @@ export const PROVINCIAS: Provincia[] = [
           "Ciudadelas, muros y andenerías preincas e incas: Maucallacta, Arcopunco, Calvario y la andenería Huanca.",
         coords: [-72.95, -14.4],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/antabamba/maucallacta-antabamba/01.jpg",
+          "/img/provincias/antabamba/maucallacta-antabamba/02.jpg",
+          "/img/provincias/antabamba/maucallacta-antabamba/04.webp",
+          "/img/provincias/antabamba/maucallacta-antabamba/05.webp",
+        ],
       },
     ],
     gastronomia: [
@@ -340,7 +404,12 @@ export const PROVINCIAS: Provincia[] = [
           "Aguas medicinales a 3 160 m, a quince minutos de Chalhuanca, con piscinas, vestidores y duchas. Alivian estrés, artritis y reumatismo.",
         coords: [-73.22, -14.27],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/aymaraes/pincahuacho/01.jpg",
+          "/img/provincias/aymaraes/pincahuacho/02.webp",
+          "/img/provincias/aymaraes/pincahuacho/03.jpg",
+          "/img/provincias/aymaraes/pincahuacho/04.jpg",
+        ],
       },
       {
         id: "puyas",
@@ -351,7 +420,11 @@ export const PROVINCIAS: Provincia[] = [
           "Rodales de titankas (puyas de hasta 10 m que florecen una vez en un siglo) asociados a bosques de queuña altoandina.",
         coords: [-73.1, -14.2],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/aymaraes/puyas/01.webp",
+          "/img/provincias/aymaraes/puyas/02.webp",
+          "/img/provincias/aymaraes/puyas/03.webp",
+        ],
       },
       {
         id: "chuquinga",
@@ -362,7 +435,12 @@ export const PROVINCIAS: Provincia[] = [
           "Fortaleza inca de piedras trabajadas (Sachaqoto Chuquinga), parte de la red defensiva del Chinchaysuyo junto a Huitec y Pucahuasi.",
         coords: [-73.3, -14.35],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/aymaraes/chuquinga/01.jpg",
+          "/img/provincias/aymaraes/chuquinga/02.jpg",
+          "/img/provincias/aymaraes/chuquinga/03.jpg",
+          "/img/provincias/aymaraes/chuquinga/04.jpg",
+        ],
       },
     ],
     gastronomia: [
@@ -397,7 +475,11 @@ export const PROVINCIAS: Provincia[] = [
           "Templo barroco de sillar (1598–1623) con cúpula de azulejos, altar de pan de oro y lienzos de la escuela cusqueña. Peregrinación cada setiembre.",
         coords: [-73.705, -13.605],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/chincheros/cocharcas/01.webp",
+          "/img/provincias/chincheros/cocharcas/02.jpg",
+          "/img/provincias/chincheros/cocharcas/03.jpg",
+        ],
       },
       {
         id: "yanahuarmi",
@@ -408,7 +490,12 @@ export const PROVINCIAS: Provincia[] = [
           "'Mujer negra' en quechua: laguna a 3 900 m con totorales y una cascada de más de 100 m que baja de Toroccocha.",
         coords: [-73.76, -13.52],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/chincheros/yanahuarmi/01.jpg",
+          "/img/provincias/chincheros/yanahuarmi/03.jpg",
+          "/img/provincias/chincheros/yanahuarmi/04.jpg",
+          "/img/provincias/chincheros/yanahuarmi/05.jpg",
+        ],
       },
       {
         id: "toroccocha",
@@ -419,7 +506,13 @@ export const PROVINCIAS: Provincia[] = [
           "Espejo de agua a 4 200 m, a cuarenta minutos de Yanahuarmi. Pesca deportiva y pastoreo altoandino en estado casi virgen.",
         coords: [-73.77, -13.5],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/chincheros/toroccocha/01.jpg",
+          "/img/provincias/chincheros/toroccocha/02.jpg",
+          "/img/provincias/chincheros/toroccocha/03.jpg",
+          "/img/provincias/chincheros/toroccocha/04.jpg",
+          "/img/provincias/chincheros/toroccocha/05.jpg",
+        ],
       },
       {
         id: "bombon",
@@ -430,7 +523,13 @@ export const PROVINCIAS: Provincia[] = [
           "Ruinas chankas en la meseta del centro poblado de Tejahuasi, con andenerías y recintos de piedra.",
         coords: [-73.68, -13.55],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/chincheros/bombon/01.webp",
+          "/img/provincias/chincheros/bombon/02.webp",
+          "/img/provincias/chincheros/bombon/03.webp",
+          "/img/provincias/chincheros/bombon/04.webp",
+          "/img/provincias/chincheros/bombon/05.webp",
+        ],
       },
     ],
     gastronomia: [
@@ -465,7 +564,11 @@ export const PROVINCIAS: Provincia[] = [
           "Peña de 12 × 15 m usada como cárcel colonial a 200 m de la plaza de Haquira, con tribunal y carceletas separadas para hombres y mujeres.",
         coords: [-72.652, -14.222],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/cotabambas/ccacca-carcel/03.jpg",
+          "/img/provincias/cotabambas/ccacca-carcel/04.jpg",
+          "/img/provincias/cotabambas/ccacca-carcel/05.jpg",
+        ],
       },
       {
         id: "templo-mara",
@@ -476,7 +579,11 @@ export const PROVINCIAS: Provincia[] = [
           "Templo virreinal de adobe y piedra con plaza de toros (Plaza Pata) al lado, centro festivo del distrito.",
         coords: [-72.71, -13.99],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/cotabambas/templo-mara/01.jpg",
+          "/img/provincias/cotabambas/templo-mara/02.jpg",
+          "/img/provincias/cotabambas/templo-mara/03.jpg",
+        ],
       },
       {
         id: "huallpachaca",
@@ -522,7 +629,11 @@ export const PROVINCIAS: Provincia[] = [
           "Iglesia virreinal de piedra con el molino incaico de Molino Huaycco en sus alrededores.",
         coords: [-72.6, -14.13],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/grau/mamara/01.jpg",
+          "/img/provincias/grau/mamara/02.jpg",
+          "/img/provincias/grau/mamara/03.jpg",
+        ],
       },
       {
         id: "occocco",
@@ -533,7 +644,17 @@ export const PROVINCIAS: Provincia[] = [
           "Lagunas altoandinas donde se observan vicuñas, cóndores, huallatas y patos silvestres.",
         coords: [-72.55, -14.2],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/grau/occocco/01.webp",
+          "/img/provincias/grau/occocco/02.webp",
+          "/img/provincias/grau/occocco/03.webp",
+          "/img/provincias/grau/occocco/04.webp",
+          "/img/provincias/grau/Lliullita/01.jpg",
+          "/img/provincias/grau/Lliullita/02.jpg",
+          "/img/provincias/grau/Lliullita/03.jpg",
+          "/img/provincias/grau/Lliullita/04.jpg",
+          "/img/provincias/grau/Lliullita/05.jpg",
+        ],
       },
       {
         id: "pintasca",
@@ -544,7 +665,11 @@ export const PROVINCIAS: Provincia[] = [
           "Abrigos con pintura rupestre junto a las fortalezas incas de Paya Paya y Pukara.",
         coords: [-72.63, -14.1],
         precision: "aproximada",
-        imagenes: [],
+        imagenes: [
+          "/img/provincias/grau/pintasca/01.jpg",
+          "/img/provincias/grau/pintasca/02.jpg",
+          "/img/provincias/grau/pintasca/03.jpg",
+        ],
       },
     ],
     gastronomia: [

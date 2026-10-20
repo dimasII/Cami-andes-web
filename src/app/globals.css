@@ -226,11 +226,11 @@ body::before {
 
 /* ——— Lectura ——— */
 .texto-lectura {
-  color: rgba(7, 43, 26, 0.82);
-  font-size: 1.0625rem;
-  line-height: 1.9;
+  color: rgba(5, 38, 23, 0.9);
+  font-size: 1.125rem;
+  line-height: 1.85;
   letter-spacing: -0.003em;
-  font-weight: 450;
+  font-weight: 460;
   text-wrap: pretty;
 }
 
@@ -282,5 +282,194 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .aura {
     animation: none;
+  }
+}
+
+/* ——— Entrada de Nosotros: logotipo ——— */
+.intro-logo {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(63, 143, 104, 0.38), transparent 42%),
+    linear-gradient(160deg, #051710 0%, #0a2a1e 48%, #061b14 100%);
+  animation: intro-logo-auto 0.75s 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.intro-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.intro-logo__halo {
+  position: absolute;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(134, 239, 172, 0.2), transparent 65%);
+  filter: blur(24px);
+  animation: intro-halo 2.8s ease-out infinite;
+}
+
+.intro-logo__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.intro-logo__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.intro-logo__ring {
+  position: absolute;
+  inset: -1.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  animation: intro-ring 1.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-logo__ring--2 {
+  inset: -3.1rem;
+  border-color: rgba(255, 255, 255, 0.12);
+  animation-delay: 0.12s;
+}
+
+.intro-logo__logo {
+  width: 7rem;
+  height: 7rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 0 32px rgba(255, 255, 255, 0.22));
+  animation: intro-logo-pop 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-logo__word {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  text-indent: 0.52em;
+  color: rgba(255, 255, 255, 0.88);
+  animation: intro-logo-text 0.9s 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-logo__sub {
+  font-size: 0.64rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  text-indent: 0.34em;
+  color: rgba(255, 255, 255, 0.45);
+  animation: intro-logo-text 0.9s 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-logo__line {
+  position: relative;
+  width: 8rem;
+  height: 1px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.intro-logo__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  transform: translateX(-100%);
+  animation: intro-logo-line 1.8s 0.1s ease-in-out both;
+}
+
+@keyframes intro-logo-auto {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes intro-logo-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+    filter: brightness(0) invert(1) blur(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(0) invert(1) blur(0);
+  }
+}
+
+@keyframes intro-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.62);
+  }
+  55% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-logo-text {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes intro-halo {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes intro-logo-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-logo {
+    display: none;
   }
 }

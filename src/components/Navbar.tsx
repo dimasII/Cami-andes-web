@@ -11,9 +11,8 @@ const links = [
   { href: "/proyecto/", label: "Proyecto", desc: "Qué es Camiñandes" },
   { href: "/provincias/", label: "Provincias", desc: "Las 7 provincias en el mapa" },
   { href: "/itinerarios/", label: "Itinerarios", desc: "4 rutas culturales" },
-  { href: "/galeria/", label: "Galería", desc: "Fotos del camino" },
   { href: "/blog/", label: "Blog", desc: "Avances del COIL" },
-  { href: "/contacto/", label: "Contacto", desc: "Escríbenos" },
+  { href: "/contacto/", label: "Nosotros", desc: "Equipo, historia y contacto" },
 ];
 
 export default function Navbar() {

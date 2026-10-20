@@ -42,7 +42,7 @@ export default function Footer() {
               </div>
             </div>
             <Link
-              href="/contacto/"
+              href="/contacto/#contacto"
               className="block rounded-[3rem] bg-white/6 p-6 backdrop-blur-3xl sm:p-8 transition hover:bg-white/10"
             >
               <div className="text-[10px] uppercase tracking-[0.28em] text-white/40">

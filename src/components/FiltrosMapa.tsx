@@ -33,7 +33,7 @@ export const CONTENIDOS: { id: Contenido; label: string; icon: Icono }[] = [
   { id: "vestimenta", label: "Vestimenta", icon: Shirt },
 ];
 
-const TIPO_ICONS: Record<TipoLugar, Icono> = {
+export const TIPO_ICONS: Record<TipoLugar, Icono> = {
   arqueologico: Landmark,
   natural: Mountain,
   termal: Waves,
