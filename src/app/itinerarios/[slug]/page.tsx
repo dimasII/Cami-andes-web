@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide";
 import Reveal from "@/components/Reveal";
 import { MorphIcon } from "@/components/MorphIcon";
+import FondoAura from "@/components/FondoAura";
+import VideoRuta from "@/components/VideoRuta";
 import { AntesDeViajar, Cronograma, LugaresEnMapa } from "@/components/itinerarios";
 import { ITINERARIOS, itinerarioPorSlug } from "@/lib/itinerarios";
 
@@ -38,18 +40,20 @@ export default async function ItinerarioDetalle({
   const it = itinerarioPorSlug(slug);
   if (!it) notFound();
 
+
   return (
-    <div className="px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
-      <div className="mx-auto max-w-5xl">
+    <div className="relative isolate overflow-hidden px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
+      <FondoAura />
+      <div className="relative mx-auto max-w-5xl">
         <Reveal>
-          <nav aria-label="Miga de pan" className="text-[11px] uppercase tracking-[0.24em] text-emerald-900/60">
+          <nav aria-label="Miga de pan" className="text-[11px] uppercase tracking-[0.24em] text-emerald-900/70">
             <Link href="/itinerarios/" className="hover:text-emerald-950 hover:underline focus-visible:outline-2 focus-visible:outline-emerald-700">
               Itinerarios
             </Link>
             {" / "}
             <span aria-current="page">{it.corto}</span>
           </nav>
-          <div className="mt-4 text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+          <div className="mt-4 text-[11px] uppercase tracking-[0.32em] text-emerald-900/80">
             {it.duracion}
           </div>
           <h1 className="serif mt-4 text-[clamp(2.5rem,6vw,5rem)] leading-[.9] text-emerald-950">
@@ -60,14 +64,14 @@ export default async function ItinerarioDetalle({
               {it.avisoDuracion}
             </p>
           )}
-          <p className="mt-4 max-w-2xl text-lg leading-9 text-emerald-950/70">
+          <p className="texto-lectura mt-5 max-w-2xl">
             {it.resumen}
           </p>
         </Reveal>
 
         {it.imagen && (
           <Reveal delay={0.1}>
-            <figure className="mt-10 overflow-hidden rounded-[2.5rem]">
+            <figure className="mt-10 overflow-hidden rounded-[2.5rem] border border-white/50 shadow-[0_30px_80px_rgba(11,40,20,0.18)]">
               <div className="relative h-72 w-full sm:h-96">
                 <Image
                   src={it.imagen.src}
@@ -85,47 +89,72 @@ export default async function ItinerarioDetalle({
         <Reveal delay={0.05}>
           <dl className="vapor mt-10 grid gap-6 rounded-[2.5rem] p-5 text-emerald-950 sm:grid-cols-2 sm:p-12">
             <div>
-              <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
+              <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
                 Duración
               </dt>
               <dd className="serif mt-2 text-3xl leading-tight">{it.duracion}</dd>
             </div>
             {it.base && (
               <div>
-                <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
+                <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
                   Alojamiento
                 </dt>
-                <dd className="mt-2 text-base leading-8 text-emerald-950/70">{it.base}</dd>
+                <dd className="texto-lectura mt-2">{it.base}</dd>
               </div>
             )}
             <div>
-              <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
+              <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
                 Destinos
               </dt>
-              <dd className="mt-2 text-base leading-8 text-emerald-950/70">
+              <dd className="texto-lectura mt-2">
                 {it.destinos.join(" · ")}
               </dd>
             </div>
             <div>
-              <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
+              <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
                 Tipo de experiencia
               </dt>
-              <dd className="mt-2 text-base leading-8 text-emerald-950/70">
+              <dd className="texto-lectura mt-2">
                 {it.tipoExperiencia.join(" · ")}
               </dd>
             </div>
             {it.publico && (
               <div className="sm:col-span-2">
-                <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
+                <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
                   Público sugerido
                 </dt>
-                <dd className="mt-2 text-base leading-8 text-emerald-950/70">{it.publico}</dd>
+                <dd className="texto-lectura mt-2">{it.publico}</dd>
               </div>
             )}
           </dl>
         </Reveal>
 
         <div className="mt-16 space-y-16 text-emerald-950">
+          {it.video && (
+            <Reveal>
+              <section aria-labelledby="video-ruta">
+                <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/80">
+                      Video
+                    </div>
+                    <h2 id="video-ruta" className="serif mt-3 text-4xl leading-none sm:text-5xl">
+                      La ruta en movimiento
+                    </h2>
+                  </div>
+                  <p className="max-w-sm text-sm leading-7 text-emerald-950/65">
+                    Un adelanto de lo que se vive en el camino.
+                  </p>
+                </div>
+                <VideoRuta
+                  src={it.video.src}
+                  poster={it.video.poster}
+                  titulo={it.nombre}
+                />
+              </section>
+            </Reveal>
+          )}
+
           <Reveal>
             <Cronograma dias={it.dias} />
           </Reveal>
@@ -140,13 +169,13 @@ export default async function ItinerarioDetalle({
                 aria-labelledby="recuerdo"
                 className="rounded-[2.5rem] border border-emerald-900/15 bg-white/40 p-5 backdrop-blur sm:p-12"
               >
-                <div className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/70">
+                <div className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
                   Recuerdo · propuesta no garantizada
                 </div>
                 <h2 id="recuerdo" className="serif mt-3 text-4xl leading-none sm:text-5xl">
                   {it.recuerdo.titulo}
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-8 text-emerald-950/70">
+                <p className="texto-lectura mt-4 max-w-2xl">
                   {it.recuerdo.descripcion}
                 </p>
               </section>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide";
 import Reveal from "@/components/Reveal";
 import { MorphIcon } from "@/components/MorphIcon";
+import FondoAura from "@/components/FondoAura";
 import { TarjetaItinerario } from "@/components/itinerarios";
 import { ITINERARIOS } from "@/lib/itinerarios";
 
@@ -14,16 +15,17 @@ export const metadata: Metadata = {
 
 export default function ItinerariosPage() {
   return (
-    <div className="px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
-      <div className="mx-auto max-w-5xl">
+    <div className="relative isolate overflow-hidden px-4 pb-24 pt-32 sm:px-8 sm:pb-36 sm:pt-36">
+      <FondoAura />
+      <div className="relative mx-auto max-w-5xl">
         <Reveal>
-          <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+          <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/80">
             Rutas · Apurímac
           </div>
           <h1 className="serif mt-6 text-[clamp(2.5rem,6vw,5rem)] leading-[.9] text-emerald-950">
             Itinerarios para caminar Apurímac.
           </h1>
-          <p className="mb-8 mt-4 max-w-2xl text-lg leading-9 text-emerald-950/70">
+          <p className="texto-lectura mb-8 mt-5 max-w-2xl">
             Cuatro propuestas desarrolladas por el proyecto: Abancay y Andahuaylas,
             de cinco días con base fija, y los circuitos norte y sur entre provincias.
             Son propuestas culturales por confirmar, no rutas listas para reservar:
@@ -48,7 +50,7 @@ export default function ItinerariosPage() {
             <h2 className="serif mt-4 text-3xl leading-tight text-emerald-950">
               Ruta combinada norte-sur
             </h2>
-            <p className="mt-3 max-w-2xl text-base leading-8 text-emerald-950/70">
+            <p className="texto-lectura mt-3 max-w-2xl">
               La unión de ambos circuitos solo se menciona como idea: falta definir
               su duración y sus etapas. No es una ruta lista para reservar.
             </p>

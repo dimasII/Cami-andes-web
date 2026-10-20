@@ -1,36 +1,19 @@
-/**
- * Itinerarios culturales de Apurímac.
- *
- * Contenido redactado a partir de las propuestas de itinerarios
- * (Abancay, Andahuaylas y circuitos norte/sur). Los horarios recogidos
- * en los documentos se muestran siempre como orientativos.
- *
- * Reglas de contenido:
- * - No se inventan coordenadas, distancias, costes, horarios ni contactos.
- * - Los recuerdos y tokens son propuestas, no servicios garantizados.
- * - Los enlaces al mapa solo usan lugares que existen en `provincias.ts`
- *   con su precisión registrada (no se altera ninguna coordenada).
- */
-
 export interface HorarioItem {
   /** Franja horaria tal como aparece en el documento (orientativa). */
   hora: string;
   actividad: string;
 }
-
 export interface DiaItinerario {
   dia: number;
   titulo: string;
   resumen: string;
   horarios: HorarioItem[];
 }
-
 export interface LugarMapaRef {
   provinciaSlug: string;
   lugarId: string;
   dia?: number;
 }
-
 export interface Itinerario {
   slug: string;
   nombre: string;
@@ -43,16 +26,15 @@ export interface Itinerario {
   publico?: string;
   resumen: string;
   imagen?: { src: string; alt: string };
+  /** Video de la ruta. Archivo en /public/video/itinerarios/<slug>.mp4 */
+  video?: { src: string; poster?: string };
   dias: DiaItinerario[];
   antesDeViajar: string[];
   recuerdo?: { titulo: string; descripcion: string };
   lugaresMapa: LugarMapaRef[];
 }
-
 const HORARIOS_ORIENTATIVOS = "Horarios orientativos, no garantizados.";
-
 export const AVISO_HORARIOS = HORARIOS_ORIENTATIVOS;
-
 export const ITINERARIOS: Itinerario[] = [
   {
     slug: "abancay",
@@ -68,6 +50,10 @@ export const ITINERARIOS: Itinerario[] = [
     imagen: {
       src: "/img/provincias/abancay/ampay/01.jpg",
       alt: "Bosque de intimpas en el Santuario Nacional de Ampay, Abancay",
+    },
+    video: {
+      src: "/video/itinerarios/abancay.mp4",
+      poster: "/img/provincias/abancay/ampay/01.jpg",
     },
     dias: [
       {
@@ -187,6 +173,10 @@ export const ITINERARIOS: Itinerario[] = [
       src: "/img/provincias/andahuaylas/pacucha/01.jpg",
       alt: "Laguna de Pacucha, Andahuaylas",
     },
+    video: {
+      src: "/video/itinerarios/andahuaylas.mp4",
+      poster: "/img/provincias/andahuaylas/pacucha/01.jpg",
+    },
     dias: [
       {
         dia: 1,
@@ -297,6 +287,10 @@ export const ITINERARIOS: Itinerario[] = [
       src: "/img/provincias/abancay/canon-miradores/01.jpg",
       alt: "Mirador sobre el cañón del Apurímac",
     },
+    video: {
+      src: "/video/itinerarios/circuito-norte.mp4",
+      poster: "/img/provincias/abancay/canon-miradores/01.jpg",
+    },
     dias: [
       {
         dia: 1,
@@ -366,6 +360,10 @@ export const ITINERARIOS: Itinerario[] = [
       "Jóvenes y adultos de 25 a 45 años en busca de destinos menos visitados, aventura, cultura con interacción comunitaria y turismo ecológico.",
     resumen:
       "Ruta por Grau, Cotabambas y Antabamba: Chuquibambilla y el sistema Vilcanota-Apurímac, iglesia colonial de Mamara, Tambobamba y Qaqa cárcel, Antabamba y el templo de Hayllaripa con caminata e interpretación ambiental. El documento propone 6 días pero desarrolla actividades solo hasta el quinto: no se inventa el día 6.",
+    video: {
+      src: "/video/itinerarios/circuito-sur.mp4",
+      poster: "/img/provincias/antabamba/ccocho/01.jpg",
+    },
     dias: [
       {
         dia: 1,

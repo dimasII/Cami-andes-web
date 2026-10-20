@@ -17,7 +17,6 @@ import {
 } from "../../lib/provincias";
 
 export default function ProvinciasPage() {
-  // Nivel 1 · región/provincia — Nivel 2 · contenido y tipo de lugar
   const [provincia, setProvincia] = useState<string | null>(null);
   const [contenido, setContenido] = useState<Contenido>("todo");
   const [tipos, setTipos] = useState<TipoLugar[]>([]);
