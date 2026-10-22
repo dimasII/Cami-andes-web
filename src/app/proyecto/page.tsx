@@ -245,7 +245,7 @@ const RUTAS = [
   {
     nombre: "Circuito Sur",
     identidad: "Historias, tradiciones y paisajes de altura",
-    duracion: "6 días · 5 descritos",
+    duracion: "5 días",
     href: "/itinerarios/circuito-sur/",
     imagen: "/img/provincias/grau/mamara/01.jpg",
     alt: "Iglesia colonial de Mamara, Grau",
@@ -1158,9 +1158,9 @@ export default function Proyecto() {
                 color="currentColor"
                 className="mt-0.5 shrink-0"
               />
-              El Circuito Sur propone seis días y describe actividades hasta el
-              quinto; el día restante queda por definir. Los itinerarios son
-              propuestas de diseño y requieren confirmación antes de reservar.
+              El Circuito Sur comprende cinco días de recorrido. Los
+              itinerarios son propuestas de diseño y requieren confirmación
+              antes de reservar.
             </p>
           </div>
         </section>

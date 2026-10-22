@@ -619,14 +619,13 @@ export const ITINERARIOS: Itinerario[] = [
     slug: "circuito-sur",
     nombre: "Circuito Sur: Grau, Cotabambas y Antabamba",
     corto: "Circuito Sur",
-    duracion: "5 días descritos",
-    avisoDuracion: "5 días descritos; duración propuesta: 6 días por confirmar.",
+    duracion: "5 días",
     destinos: ["Chuquibambilla", "Mamara", "Tambobamba", "Antabamba", "Hayllaripa"],
     tipoExperiencia: ["Turismo cultural", "Comunidades", "Patrimonio religioso", "Naturaleza altoandina"],
     publico:
       "Jóvenes y adultos de 25 a 45 años en busca de destinos menos visitados, aventura, cultura con interacción comunitaria y turismo ecológico.",
     resumen:
-      "Ruta por Grau, Cotabambas y Antabamba: Chuquibambilla y el sistema Vilcanota-Apurímac, iglesia colonial de Mamara, Tambobamba y Qaqa cárcel, Antabamba y el templo de Hayllaripa con caminata e interpretación ambiental. El documento propone 6 días pero desarrolla actividades solo hasta el quinto: no se inventa el día 6.",
+      "Ruta por Grau, Cotabambas y Antabamba: Chuquibambilla y el sistema Vilcanota-Apurímac, iglesia colonial de Mamara, Tambobamba y Qaqa cárcel, Antabamba y el templo de Hayllaripa con caminata e interpretación ambiental.",
     imagen: {
       src: "/img/provincias/grau/mamara/01.jpg",
       alt: "Arco de piedra tallado y fachada de la iglesia colonial de Mamara, Grau",
@@ -690,7 +689,6 @@ export const ITINERARIOS: Itinerario[] = [
       },
     ],
     antesDeViajar: [
-      "El día 6 no está desarrollado en el documento: queda pendiente de definir.",
       "La caminata se ajusta al estado físico del grupo y a las condiciones meteorológicas.",
       "El picnic solo puede hacerse en un lugar permitido.",
       "Las actividades con comunidades requieren coordinación y acuerdo previos.",

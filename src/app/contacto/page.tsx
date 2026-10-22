@@ -36,8 +36,6 @@ type Persona = {
   foto: string;
 };
 
-// Los retratos se guardan en public/img/equipo/.
-// Si un archivo no existe, la tarjeta muestra el monograma de la persona.
 const EQUIPO: Persona[] = [
   {
     nombre: "Sofía Pérez Cobas",
