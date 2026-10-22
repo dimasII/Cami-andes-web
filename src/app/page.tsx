@@ -15,7 +15,7 @@ const secciones = [
     icon: Users,
     tag: "Nosotros",
     title: "Quiénes somos",
-    desc: "El equipo detrás de Camiñandes y su trabajo en Apurímac.",
+    desc: "El equipo detrás de CamiñAndes y su trabajo en Apurímac.",
     href: "/contacto/#equipo",
     imagen: "/img/provincias/abancay/muralla-china/04.jpg",
     alt: "Caminantes en el mirador de la Muralla China, Apurímac",
@@ -35,7 +35,7 @@ const secciones = [
     icon: Route,
     tag: "Itinerarios",
     title: "4 rutas culturales",
-    desc: "Abancay, Andahuaylas y los circuitos norte y sur, día a día.",
+    desc: "Abancay, Andahuaylas y los circuitos norte y sur, cada uno con identidad propia.",
     href: "/itinerarios/",
     imagen: "/img/provincias/abancay/pachachaca/02.jpg",
     alt: "Puente colonial de Pachachaca sobre el río Apurímac",
@@ -180,16 +180,17 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl rounded-[4rem] px-6 py-14 text-center text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.8)] sm:px-10">
           <div className="condense condense-1 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-white/80">
-            Proyecto COIL · 2026
+            COIL 2026 · Turismo cultural
           </div>
 
           <h1 className="serif condense condense-2 mt-10 text-[clamp(3.5rem,11vw,9rem)] leading-[.85]">
-            Camiñandes
+            CamiñAndes
           </h1>
 
           <p className="condense condense-3 mx-auto mt-8 max-w-2xl text-lg leading-9 text-white/75">
-            Caminando entre Apurímac y Galicia: un intercambio cultural y
-            académico sobre caminos, memoria, territorio e identidad.
+            Entre raíces y montañas: una forma de descubrir Apurímac a través
+            de sus paisajes, su patrimonio y las personas que mantienen vivas
+            sus tradiciones.
           </p>
 
           <div className="condense condense-4 mt-10 flex flex-wrap justify-center gap-4">
@@ -201,10 +202,10 @@ export default function Home() {
               <MorphIcon icon={ArrowRight} size={16} color="white" />
             </Link>
             <Link
-              href="/contacto/#equipo"
+              href="/itinerarios/"
               className="rounded-full bg-white/8 px-8 py-5 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-3xl transition hover:bg-white/14"
             >
-              Conoce al equipo
+              Ver itinerarios
             </Link>
           </div>
         </div>
@@ -231,6 +232,55 @@ export default function Home() {
               <TarjetaEnlace key={c.tag} item={c} index={i} delay={i * 0.12} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* STORYTELLING */}
+      <section className="ascend-light relative overflow-hidden px-4 pb-36 sm:px-8">
+        <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <Reveal>
+            <div className="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+              El llamado de las montañas
+            </div>
+            <h2 className="serif mt-6 text-[clamp(2.5rem,6vw,4.8rem)] leading-[.9] text-emerald-950">
+              Conocer Apurímac es acercarse a sus personas.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-9 text-emerald-950/70">
+              Hay lugares que se visitan y lugares que te reciben. Entre las
+              montañas de Apurímac, los caminos, los tejidos, los sabores y las
+              historias de sus habitantes conservan una memoria que sigue viva.
+            </p>
+            <p className="mt-4 max-w-xl text-lg leading-9 text-emerald-950/70">
+              CamiñAndes invita a recorrer este territorio, escuchar sus voces y
+              descubrir la relación entre naturaleza, cultura y comunidad.
+            </p>
+            <Link
+              href="/proyecto/#experiencia"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-950 px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-0.5 hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
+            >
+              Cómo diseñamos la experiencia
+              <MorphIcon icon={ArrowRight} size={14} color="white" />
+            </Link>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ol className="vapor space-y-4 rounded-[2.5rem] border border-white/50 p-6 text-emerald-950 sm:p-8">
+              {[
+                "Descubrir el territorio",
+                "Interpretar la memoria y el paisaje",
+                "Aprender de las comunidades",
+                "Compartir la cultura y la vida cotidiana",
+                "Reflexionar y recordar",
+              ].map((momento, i) => (
+                <li key={momento} className="flex items-center gap-4">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-950 text-xs font-semibold text-white">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="serif text-2xl leading-tight">{momento}</span>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </div>
       </section>
 

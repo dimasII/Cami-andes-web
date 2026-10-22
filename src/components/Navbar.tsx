@@ -8,7 +8,7 @@ import { Menu, X } from "lucide";
 
 const links = [
   { href: "/", label: "Inicio", desc: "Portada del proyecto" },
-  { href: "/proyecto/", label: "Proyecto", desc: "Qué es Camiñandes" },
+  { href: "/proyecto/", label: "Proyecto", desc: "Qué es CamiñAndes" },
   { href: "/provincias/", label: "Provincias", desc: "Las 7 provincias en el mapa" },
   { href: "/itinerarios/", label: "Itinerarios", desc: "4 rutas culturales" },
   { href: "/blog/", label: "Blog", desc: "Avances del COIL" },
@@ -46,7 +46,7 @@ export default function Navbar() {
           <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-white/10">
             <Image
               src="/logo.svg"
-              alt="Logotipo Camiñandes"
+              alt="Logotipo CamiñAndes"
               width={40}
               height={40}
               className="h-9 w-9 object-contain brightness-0 invert"
@@ -55,7 +55,7 @@ export default function Navbar() {
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.35em] text-white/55">
-              Camiñandes
+              CamiñAndes
             </div>
             <div className="hidden text-sm text-white sm:block">
               Apurímac · Galicia

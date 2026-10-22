@@ -56,7 +56,7 @@ export default function IntroLogo() {
           />
         </div>
 
-        <div className="intro-logo__word">Camiñandes</div>
+        <div className="intro-logo__word">CamiñAndes</div>
         <div className="intro-logo__sub">Apurímac · Galicia · COIL 2026</div>
         <span className="intro-logo__line" />
       </div>

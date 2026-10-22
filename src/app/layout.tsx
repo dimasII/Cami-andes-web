@@ -17,9 +17,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Camiñandes | COIL Apurímac - Galicia",
+  title: "CamiñAndes | COIL Apurímac - Galicia",
   description:
-    "Proyecto COIL de intercambio cultural entre Apurímac (Perú) y Galicia (España): camino, memoria y comunidad.",
+    "CamiñAndes: turismo cultural e interpretativo en Apurímac. Entre raíces y montañas, cuatro itinerarios para descubrir el patrimonio, los paisajes y las comunidades del territorio.",
   icons: {
     icon: "/logo.svg",
   },

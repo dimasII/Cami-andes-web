@@ -138,13 +138,8 @@ body::before {
     linear-gradient(180deg, #234334 0%, #11251c 100%);
 }
 
-.organic {
-  border-radius: 42% 58% 61% 39% / 38% 36% 64% 62%;
-}
-
-.leaf {
-  border-radius: 58% 42% 64% 36% / 41% 60% 40% 59%;
-}
+.organic {border-radius: 42% 58% 61% 39% / 38% 36% 64% 62%;}
+.leaf {border-radius: 58% 42% 64% 36% / 41% 60% 40% 59%;}
 
 .canopy {
   position: absolute;
@@ -154,10 +149,7 @@ body::before {
   animation: float 10s ease-in-out infinite;
 }
 
-.earth {
-  position: relative;
-  overflow: hidden;
-}
+.earth {position: relative;overflow: hidden;}
 
 .earth::before {
   content: "";
@@ -224,7 +216,6 @@ body::before {
   box-shadow: none !important;
 }
 
-/* ——— Lectura ——— */
 .texto-lectura {
   color: rgba(5, 38, 23, 0.9);
   font-size: 1.125rem;
@@ -243,7 +234,6 @@ body::before {
   text-wrap: pretty;
 }
 
-/* ——— Auras de fondo para páginas interiores ——— */
 .aura {
   position: absolute;
   border-radius: 9999px;
@@ -285,7 +275,6 @@ body::before {
   }
 }
 
-/* ——— Entrada de Nosotros: logotipo ——— */
 .intro-logo {
   position: fixed;
   inset: 0;

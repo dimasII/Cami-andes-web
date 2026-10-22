@@ -8,9 +8,9 @@ import { TarjetaItinerario } from "@/components/itinerarios";
 import { ITINERARIOS } from "@/lib/itinerarios";
 
 export const metadata: Metadata = {
-  title: "Itinerarios | Camiñandes",
+  title: "Itinerarios | CamiñAndes",
   description:
-    "Cuatro rutas culturales por Apurímac: Abancay, Andahuaylas y los circuitos norte y sur. Propuestas por confirmar, con coordinación comunitaria.",
+    "Cuatro rutas culturales por Apurímac: Abancay, Andahuaylas y los circuitos norte y sur. Propuestas de diseño por confirmar, con coordinación comunitaria.",
 };
 
 export default function ItinerariosPage() {
@@ -23,13 +23,17 @@ export default function ItinerariosPage() {
             Rutas · Apurímac
           </div>
           <h1 className="serif mt-6 text-[clamp(2.5rem,6vw,5rem)] leading-[.9] text-emerald-950">
-            Itinerarios para caminar Apurímac.
+            Cuatro formas de caminar Apurímac.
           </h1>
           <p className="texto-lectura mb-8 mt-5 max-w-2xl">
-            Cuatro propuestas desarrolladas por el proyecto: Abancay y Andahuaylas,
-            de cinco días con base fija, y los circuitos norte y sur entre provincias.
-            Son propuestas culturales por confirmar, no rutas listas para reservar:
-            requieren verificar accesos, horarios y coordinación con las comunidades.
+            Cuatro propuestas desarrolladas por el proyecto, con una identidad
+            común y acentos propios: Abancay, entre paisaje, historia y vida
+            cotidiana; Andahuaylas, en los saberes y las prácticas locales; el
+            circuito norte, en la interpretación del paisaje y su patrimonio; y
+            el circuito sur, en las historias, tradiciones y paisajes de altura.
+            Son propuestas de diseño por confirmar, no rutas listas para
+            reservar: requieren verificar accesos, horarios y coordinación con
+            las comunidades.
           </p>
         </Reveal>
 

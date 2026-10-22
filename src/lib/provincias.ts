@@ -227,7 +227,7 @@ export const PROVINCIAS: Provincia[] = [
         distrito: "Pacucha",
         tipo: "arqueologico",
         descripcion:
-          "Centro ceremonial chanka e inca con la colina aterrazada de Muyumuyu. Cada 19 de junio escenifica el Sóndor Raymi.",
+          "Centro ceremonial chanka e inca con la colina aterrazada de Muyumuyu. Tradicionalmente, en junio se escenifica el Sóndor Raymi.",
         coords: [-73.268884, -13.606301],
         precision: "exacta",
         imagenes: [

@@ -7,6 +7,7 @@ import Reveal from "@/components/Reveal";
 import { MorphIcon } from "@/components/MorphIcon";
 import FondoAura from "@/components/FondoAura";
 import VideoRuta from "@/components/VideoRuta";
+import GaleriaRuta from "@/components/GaleriaRuta";
 import { AntesDeViajar, Cronograma, LugaresEnMapa } from "@/components/itinerarios";
 import { ITINERARIOS, itinerarioPorSlug } from "@/lib/itinerarios";
 
@@ -24,9 +25,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const it = itinerarioPorSlug(slug);
-  if (!it) return { title: "Itinerario no encontrado | Camiñandes" };
+  if (!it) return { title: "Itinerario no encontrado | CamiñAndes" };
   return {
-    title: `${it.nombre} | Camiñandes`,
+    title: `${it.nombre} | CamiñAndes`,
     description: it.resumen,
   };
 }
@@ -121,7 +122,7 @@ export default async function ItinerarioDetalle({
             {it.publico && (
               <div className="sm:col-span-2">
                 <dt className="text-[11px] uppercase tracking-[0.28em] text-emerald-900/80">
-                  Público sugerido
+                  Público objetivo
                 </dt>
                 <dd className="texto-lectura mt-2">{it.publico}</dd>
               </div>
@@ -130,6 +131,12 @@ export default async function ItinerarioDetalle({
         </Reveal>
 
         <div className="mt-16 space-y-16 text-emerald-950">
+          {it.galeria && it.galeria.length > 0 && (
+            <Reveal>
+              <GaleriaRuta imagenes={it.galeria} />
+            </Reveal>
+          )}
+
           {it.video && (
             <Reveal>
               <section aria-labelledby="video-ruta">

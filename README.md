@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/banner.svg" alt="Camiñandes — Dos orillas, un mismo camino. COIL 2026 Apurímac · Galicia" width="100%" />
+  <img src="docs/banner.svg" alt="CamiñAndes — Dos orillas, un mismo camino. COIL 2026 Apurímac · Galicia" width="100%" />
 </p>
 
 <p align="center">
@@ -7,10 +7,10 @@
   <a href="https://react.dev/"><img alt="React 19" src="https://img.shields.io/badge/React-19.3-61DAFB?style=flat-square&amp;logo=react&amp;logoColor=black" /></a>
   <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" /></a>
   <a href="https://tailwindcss.com/"><img alt="Tailwind CSS 4" src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&amp;logo=tailwindcss&amp;logoColor=white" /></a>
-  <a href="https://www.mapbox.com/"><img alt="Mapbox GL" src="https://img.shields.io/badge/Mapbox_GL-3-000000?style=flat-square&amp;logo=mapbox&amp;logoColor=white" /></a>
+import GaleriaRuta from "@/components/GaleriaRuta";x GL" src="https://img.shields.io/badge/Mapbox_GL-3-000000?style=flat-square&amp;logo=mapbox&amp;logoColor=white" /></a>
   <img alt="COIL 2026" src="https://img.shields.io/badge/COIL-2026-065f46?style=flat-square" />
 </p>
-
+/** Static export: all routes are prerendered in the build. */
 <p align="center">
   <strong>Del Camino de Santiago a los caminos andinos.</strong><br />
   Una web para leer el territorio, la memoria y la comunidad entre Apurímac y Galicia.
@@ -18,11 +18,11 @@
 
 ---
 
-> **Camiñandes** es un proyecto COIL entre la Universidade de Santiago de Compostela (Galicia, España) y la Universidad Nacional Micaela Bastidas de Apurímac (Perú). Reúne **7 provincias**, **29 lugares**, **4 itinerarios** y **120 fotografías** en una experiencia web hecha para perderse y volver a mirar.
+> **CamiñAndes** es un proyecto COIL entre la Universidade de Santiago de Compostela (Galicia, España) y la Universidad Nacional Micaela Bastidas de Apurímac (Perú). Reúne **7 provincias**, **29 lugares**, **4 itinerarios** y **120 fotografías** en una experiencia web hecha para perderse y volver a mirar.
 
 ## 🌿 La idea
 
-Caminar no es solo desplazarse: es leer un paisaje, escuchar una historia y reconocer a quienes lo habitan. **Camiñandes** nace de esa idea y la convierte en un archivo vivo que compara dos formas de caminar el mundo: el Camino de Santiago y los caminos andinos de Apurímac.
+Caminar no es solo desplazarse: es leer un paisaje, escuchar una historia y reconocer a quienes lo habitan. **CamiñAndes** nace de esa idea y la convierte en un archivo vivo que compara dos formas de caminar el mundo: el Camino de Santiago y los caminos andinos de Apurímac.
 
 La web está pensada como un mapa que se puede recorrer de muchas maneras: desde el mapa interactivo de las siete provincias hasta el detalle de cada ruta, cada lugar y cada relato.
 
@@ -50,7 +50,7 @@ La web está pensada como un mapa que se puede recorrer de muchas maneras: desde
 
 | Inicio | Provincias | Itinerarios |
 |:---:|:---:|:---:|
-| [![Inicio de Camiñandes](docs/preview-inicio.jpg)](docs/preview-inicio.jpg) | [![Provincias de Apurímac](docs/preview-provincias.jpg)](docs/preview-provincias.jpg) | [![Itinerario Abancay esencial](docs/preview-itinerario.jpg)](docs/preview-itinerario.jpg) |
+| [![Inicio de CamiñAndes](docs/preview-inicio.jpg)](docs/preview-inicio.jpg) | [![Provincias de Apurímac](docs/preview-provincias.jpg)](docs/preview-provincias.jpg) | [![Itinerario Abancay esencial](docs/preview-itinerario.jpg)](docs/preview-itinerario.jpg) |
 
 ## 🛠️ Bajo el capó
 

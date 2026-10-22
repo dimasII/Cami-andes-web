@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide";
 import Reveal from "./Reveal";
 import { MorphIcon } from "./MorphIcon";
 import { provinciaPorSlug } from "../lib/provincias";
-import { AVISO_HORARIOS, type DiaItinerario, type Itinerario } from "../lib/itinerarios";
+import { AVISO_SECUENCIA_DIA, type DiaItinerario, type Itinerario } from "../lib/itinerarios";
 
 export function TarjetaItinerario({
   itinerario,
@@ -81,14 +81,14 @@ export function TarjetaItinerario({
 }
 
 export function Cronograma({ dias }: { dias: DiaItinerario[] }) {
-  const conHorarios = dias.some((d) => d.horarios.length > 0);
+  const conMomentos = dias.some((d) => d.momentos.length > 0);
   return (
     <section aria-labelledby="cronograma">
       <h2 id="cronograma" className="serif text-4xl leading-none sm:text-5xl">
         Día a día
       </h2>
-      {conHorarios && (
-        <p className="mt-3 text-sm leading-7 text-emerald-950/70">{AVISO_HORARIOS}</p>
+      {conMomentos && (
+        <p className="mt-3 text-sm leading-7 text-emerald-950/70">{AVISO_SECUENCIA_DIA}</p>
       )}
       <ol className="mt-8 space-y-6">
         {dias.map((d) => (
@@ -105,19 +105,19 @@ export function Cronograma({ dias }: { dias: DiaItinerario[] }) {
               </h3>
             </div>
             <p className="texto-lectura mt-4">{d.resumen}</p>
-            {d.horarios.length > 0 && (
+            {d.momentos.length > 0 && (
               <div className="mt-5 overflow-x-auto rounded-2xl bg-white/60">
                 <table className="w-full min-w-[320px] text-left text-sm leading-7">
                   <caption className="px-5 pb-1 pt-4 text-left text-[11px] uppercase tracking-[0.2em] text-emerald-900/75">
-                    Horario orientativo
+                    Secuencia del día
                   </caption>
                   <tbody>
-                    {d.horarios.map((h) => (
-                      <tr key={h.hora + h.actividad} className="border-t border-emerald-950/5 transition hover:bg-emerald-950/[0.03]">
-                        <th scope="row" className="whitespace-nowrap px-5 py-2.5 font-semibold">
-                          {h.hora}
+                    {d.momentos.map((m) => (
+                      <tr key={m.momento + m.actividad} className="border-t border-emerald-950/5 transition hover:bg-emerald-950/[0.03]">
+                        <th scope="row" className="whitespace-nowrap px-5 py-2.5 align-top font-semibold">
+                          {m.momento}
                         </th>
-                        <td className="px-5 py-2.5 text-[0.9375rem] leading-7 text-emerald-950/80">{h.actividad}</td>
+                        <td className="px-5 py-2.5 text-[0.9375rem] leading-7 text-emerald-950/80">{m.actividad}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -18,7 +18,7 @@ export default function Carrusel({ imagenes, alt, alto = "h-56" }: CarruselProps
     return (
       <div className={`flex w-full flex-col items-center justify-center gap-2 rounded-2xl bg-emerald-950/5 text-center ${alto}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.svg" alt="Camiñandes" className="h-16 w-16 object-contain opacity-30"/>
+        <img src="/logo.svg" alt="CamiñAndes" className="h-16 w-16 object-contain opacity-30"/>
         <span className="px-6 text-xs uppercase tracking-[0.2em] text-emerald-950/40"> Fotos próximamente</span>
       </div>
     );

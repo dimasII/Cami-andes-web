@@ -3,7 +3,7 @@ import FondoAura from "../../components/FondoAura";
 const posts = [
   {
     fecha: "Oct 2026",
-    titulo: "Arranca el COIL Camiñandes",
+    titulo: "Arranca el COIL CamiñAndes",
     resumen: "Presentación del proyecto, equipos y calendario de trabajo.",
   },
   {

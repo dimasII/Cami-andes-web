@@ -14,17 +14,17 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <Image
                 src="/logo.svg"
-                alt="Logotipo Camiñandes"
+                alt="Logotipo CamiñAndes"
                 width={52}
                 height={52}
                 className="h-13 w-13 rounded-full bg-white/10 object-contain p-1 brightness-0 invert"
               />
               <div className="text-[11px] uppercase tracking-[0.34em] text-white/40">
-                Camiñandes · COIL 2026
+                CamiñAndes · COIL 2026
               </div>
             </div>
             <h2 className="serif mt-6 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.9]">
-              Caminando entre Apurímac y Galicia.
+              Entre raíces y montañas.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-white/65">
               Del Camino de Santiago a los caminos andinos: camino, memoria y
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8 text-sm text-white/90">
-          <div>Camiñandes — COIL Apurímac (Perú) · Galicia (España)</div>
+          <div>CamiñAndes — COIL Apurímac (Perú) · Galicia (España)</div>
           <div className="flex gap-5 text-[11px] uppercase tracking-[0.28em]">
             <span>Camino</span>
             <span>Memoria</span>
