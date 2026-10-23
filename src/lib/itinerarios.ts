@@ -3,11 +3,21 @@ export interface MomentoDia {
   momento: string;
   actividad: string;
 }
+export interface HorarioDia {
+  /** Franja horaria tal como aparece en el documento de la ruta. */
+  hora: string;
+  actividad: string;
+  lugar?: string;
+  /** Indicaciones operativas o de seguridad asociadas a la actividad. */
+  notas?: string;
+}
 export interface DiaItinerario {
   dia: number;
   titulo: string;
   resumen: string;
   momentos: MomentoDia[];
+  /** Horario detallado cuando el documento de la ruta lo especifica. */
+  horario?: HorarioDia[];
 }
 export interface LugarMapaRef {
   provinciaSlug: string;
@@ -542,14 +552,23 @@ export const ITINERARIOS: Itinerario[] = [
     slug: "circuito-norte",
     nombre: "Circuito Norte: Aymaraes y Chincheros",
     corto: "Circuito Norte",
-    duracion: "5 días",
-    base: "Alojamientos locales en Chalhuanca y Cocharcas, según la etapa.",
-    destinos: ["Chalhuanca", "Caraybamba", "Cañón del Apurímac", "Cocharcas", "Huaccana"],
-    tipoExperiencia: ["Turismo cultural", "Comunidades", "Naturaleza y termas", "Turismo ecológico"],
+    duracion: "6 días",
+    base: "Alojamientos locales en Chalhuanca, Pincahuacho o Cocharcas, según la etapa y disponibilidad.",
+    destinos: [
+      "Chalhuanca",
+      "Caraybamba",
+      "Sachaqoto Chuquinga y Apaqsa",
+      "Cañón del Apurímac",
+      "Pincahuacho",
+      "Cocharcas",
+      "Yanahuarmi",
+      "Huaccana",
+    ],
+    tipoExperiencia: ["Turismo cultural", "Comunidades", "Patrimonio religioso", "Naturaleza y termas", "Turismo ecológico"],
     publico:
       "Jóvenes y adultos de 25 a 45 años en busca de destinos menos visitados, aventura, cultura con interacción comunitaria y turismo ecológico.",
     resumen:
-      "Cinco días por Aymaraes y Chincheros: Chalhuanca histórica y gastronómica, agricultura y fortalezas en Caraybamba, cañón del Apurímac y termas de Pincahuacho, santuario de Cocharcas y cierre en lagunas altoandinas y Huaccana, de raíz chanka. Las actividades se presentan como propuesta: ninguna está confirmada.",
+      "Seis días por Aymaraes y Chincheros: Chalhuanca histórica y gastronómica, agricultura y fortalezas en Caraybamba, cañón del Apurímac, termas de Pincahuacho, santuario de Cocharcas y cierre en la laguna de Yanahuarmi y Huaccana, de raíz chanka. Las actividades se presentan como propuesta: ninguna está confirmada.",
     imagen: {
       src: "/img/provincias/abancay/canon-miradores/01.jpg",
       alt: "Mirador sobre el cañón del Apurímac",
@@ -563,42 +582,362 @@ export const ITINERARIOS: Itinerario[] = [
         dia: 1,
         titulo: "Chalhuanca: historia y sabores",
         resumen:
-          "Instalación en alojamiento local, paseo con explicación histórica por la ciudad y la plaza, mercado con productos agrícolas y gastronomía —con taller opcional de cocina y hierbas—, paseo por la naturaleza y cena de bienvenida.",
+          "Llegada y recepción en Chalhuanca, instalación y descanso, paseo histórico por el centro y la plaza, mercado y degustación de productos locales, taller opcional de cocina y hierbas, paseo de naturaleza y cena de bienvenida con espectáculo cultural.",
         momentos: [],
+        horario: [
+          {
+            hora: "08:00–11:00",
+            actividad: "Llegada, recepción y presentación del itinerario",
+            lugar: "Chalhuanca",
+            notas:
+              "Bienvenida en el alojamiento conveniado; entrega de información, normas de seguridad y contacto del guía.",
+          },
+          {
+            hora: "11:00–12:00",
+            actividad: "Instalación y descanso inicial",
+            lugar: "Alojamiento local",
+            notas: "Check-in y acomodación.",
+          },
+          {
+            hora: "12:00–13:30",
+            actividad: "Paseo histórico por Chalhuanca y plaza principal",
+            lugar: "Centro histórico",
+            notas:
+              "Visita guiada tipo free tour incluida: patrimonio colonial, historia local y presentación del paisaje urbano. Chalhuanca conserva iglesias coloniales con tallados en madera y pan de oro.",
+          },
+          {
+            hora: "13:30–15:00",
+            actividad: "Mercado y degustación",
+            lugar: "Mercado de Chalhuanca",
+            notas: "Papa nativa, huactay, huatía, moraya y picante de trigo.",
+          },
+          {
+            hora: "15:00–16:30",
+            actividad: "Taller opcional de cocina y hierbas locales",
+            lugar: "Local gastronómico o mercado",
+            notas:
+              "Actividad opcional; requiere reserva previa y coordinación con una familia o cocinera local.",
+          },
+          {
+            hora: "16:30–18:00",
+            actividad: "Paseo de naturaleza y observación de flora y fauna",
+            lugar: "Entorno inmediato de Chalhuanca",
+            notas: "Ruta suave, con paradas interpretativas.",
+          },
+          {
+            hora: "19:30–21:30",
+            actividad: "Cena de bienvenida y espectáculo cultural",
+            lugar: "Restaurante o espacio comunitario",
+            notas:
+              "Música tradicional, artistas locales, pequeña representación teatral y dinámica grupal.",
+          },
+        ],
       },
       {
         dia: 2,
         titulo: "Caraybamba: agricultura y fortalezas",
         resumen:
-          "Agricultura de montaña, manejo del agua y saberes campesinos; taller participativo con agricultores o comuneros y almuerzo comunitario; fortaleza inca de Sachaqoto Chuquinga y sitio de Apaqsa; cuaderno de paisaje con croquis de andenes y patrimonio. Regreso a Chalhuanca.",
+          "Traslado a Caraybamba para agricultura de montaña y manejo del agua; taller participativo con agricultores o comuneros y almuerzo comunitario; traslado y visita guiada a Sachaqoto Chuquinga y Apaqsa; interpretación histórica y regreso a Chalhuanca.",
         momentos: [],
+        horario: [
+          {
+            hora: "07:30–08:15",
+            actividad: "Desayuno y salida hacia Caraybamba",
+            lugar: "Chalhuanca → Caraybamba",
+            notas: "Trayecto estimado: 30–45 minutos.",
+          },
+          {
+            hora: "08:15–09:30",
+            actividad: "Agricultura de montaña y manejo del agua",
+            lugar: "Andenerías de Caraybamba",
+            notas:
+              "Explicación sobre cultivos locales, semillas nativas, guano, rotación de tierras y relación con la Pachamama. Las andenerías son un recurso reconocido del paisaje agrario de Aymaraes.",
+          },
+          {
+            hora: "09:30–12:00",
+            actividad: "Taller participativo con agricultores o comuneros",
+            lugar: "Comunidad de Caraybamba",
+            notas:
+              "Siembra, selección de semillas, compost, labores tradicionales o preparación de alimentos estacionales.",
+          },
+          {
+            hora: "12:00–13:30",
+            actividad: "Almuerzo comunitario",
+            lugar: "Comunidad de Caraybamba",
+            notas:
+              "Menú basado en productos de temporada; conviene variarlo según la época de visita.",
+          },
+          {
+            hora: "13:30–15:30",
+            actividad: "Traslado hacia Sachaqoto Chuquinga y Apaqsa",
+            lugar: "Caraybamba → Chalhuanca",
+            notas: "Tiempo de bus estimado: 1 h 30–2 h.",
+          },
+          {
+            hora: "15:30–17:30",
+            actividad: "Visita guiada a Sachaqoto Chuquinga y Apaqsa",
+            lugar: "Distrito de Chalhuanca",
+            notas:
+              "Sachaqoto Chuquinga es una fortaleza inca con piedras trabajadas; Apaqsa presenta restos preincas, chullpas y muros.",
+          },
+          {
+            hora: "17:30–18:00",
+            actividad: "Interpretación histórica y patrimonial",
+            lugar: "Sitios visitados",
+            notas:
+              "Historia chanka, inca y colonial; valor material e inmaterial del territorio.",
+          },
+          {
+            hora: "18:00–19:00",
+            actividad: "Regreso a Chalhuanca",
+            lugar: "Chalhuanca",
+            notas: "Traslado corto.",
+          },
+          {
+            hora: "19:30–21:00",
+            actividad: "Cena libre o coordinada",
+            lugar: "Chalhuanca",
+            notas: "Recomendación de establecimientos locales.",
+          },
+        ],
       },
       {
         dia: 3,
-        titulo: "Cañón del Apurímac y termas de Pincahuacho",
+        titulo: "Cañón del Apurímac: miradores y paisaje",
         resumen:
-          "Ruta por el cañón y sus miradores seguros, fotografía y cuadernos de dibujo, comida grupal y descanso en las termas de Pincahuacho, con cena de productos locales de temporada.",
+          "Salida temprana hacia el cañón del Apurímac; ruta por miradores seguros, comida grupal, descanso, exploración, fotografía y dibujo/interpretación del paisaje; regreso a Chalhuanca y cena de temporada.",
         momentos: [],
+        horario: [
+          {
+            hora: "06:30–07:30",
+            actividad: "Desayuno y salida temprana hacia el Cañón del Apurímac",
+            lugar: "Chalhuanca → miradores",
+            notas:
+              "La salida temprana permite aprovechar la luz y evitar el calor de mediodía.",
+          },
+          {
+            hora: "07:30–10:30",
+            actividad: "Ruta por los alrededores y miradores seguros",
+            lugar: "Cañón del Apurímac",
+            notas:
+              "La ruta puede tener variantes según condición física, clima y accesos.",
+          },
+          {
+            hora: "10:30–12:00",
+            actividad: "Comida grupal",
+            lugar: "Área habilitada junto a la ruta",
+            notas:
+              "Picnic o almuerzo en espacio autorizado, con gestión de residuos.",
+          },
+          {
+            hora: "12:00–13:00",
+            actividad: "Descanso",
+            lugar: "Zona de comida",
+            notas: "Tiempo libre supervisado.",
+          },
+          {
+            hora: "13:00–16:00",
+            actividad: "Exploración, fotografía y dibujo/interpretación del paisaje",
+            lugar: "Cañón del Apurímac",
+            notas:
+              "Actividad de educación ambiental y reflexión sobre biodiversidad.",
+          },
+          {
+            hora: "16:00–17:30",
+            actividad: "Regreso a Chalhuanca",
+            lugar: "Chalhuanca",
+            notas: "Tiempo flexible según la ruta elegida.",
+          },
+          {
+            hora: "19:30–21:00",
+            actividad: "Cena con productos locales de temporada",
+            lugar: "Chalhuanca",
+            notas: "Menú diferenciado por estación.",
+          },
+        ],
       },
       {
         dia: 4,
-        titulo: "Cocharcas: santuario y comunidad",
+        titulo: "Pincahuacho: termas y descanso",
         resumen:
-          "Instalación en el alojamiento, paisaje rural y plazas, almuerzo de platos picantes, visita guiada al santuario de Cocharcas, charlas con las comunidades y cena grupal.",
+          "Jornada de menor exigencia: traslado a los baños termales de Pincahuacho, uso por turnos, comida ligera, tiempo libre y regreso o instalación en Chalhuanca —con alternativa de pernoctar en Pincahuacho—, paseo rural y cena.",
         momentos: [],
+        horario: [
+          {
+            hora: "08:00–09:00",
+            actividad: "Desayuno y preparación para el día de descanso",
+            lugar: "Chalhuanca",
+            notas: "Jornada de menor exigencia física.",
+          },
+          {
+            hora: "09:00–10:00",
+            actividad: "Traslado a los baños termales de Pincahuacho",
+            lugar: "Chalhuanca → Pincahuacho",
+            notas:
+              "Aproximadamente 7 km; las fuentes recogen entre 15 y 30 minutos de recorrido.",
+          },
+          {
+            hora: "10:00–12:00",
+            actividad: "Baños termales",
+            lugar: "Pincahuacho",
+            notas:
+              "Uso por turnos, hidratación y recomendaciones médicas para personas con hipertensión, embarazo o afecciones cardíacas.",
+          },
+          {
+            hora: "12:30–14:00",
+            actividad: "Comida con productos locales",
+            lugar: "Pincahuacho o alrededores",
+            notas: "Menú ligero, adecuado tras la actividad térmica.",
+          },
+          {
+            hora: "14:00–16:00",
+            actividad: "Tiempo libre y descanso",
+            lugar: "Pincahuacho",
+            notas: "Opción de segunda sesión termal o paseo tranquilo.",
+          },
+          {
+            hora: "16:00–17:30",
+            actividad: "Traslado e instalación en alojamiento",
+            lugar: "Pincahuacho → Chalhuanca",
+            notas:
+              "Alternativa: pernoctar en Pincahuacho si existe alojamiento adecuado.",
+          },
+          {
+            hora: "17:30–18:30",
+            actividad: "Paseo por el entorno rural y las plazas",
+            lugar: "Chalhuanca",
+            notas: "Caminata suave y observación del paisaje.",
+          },
+          {
+            hora: "19:30–21:00",
+            actividad: "Cena con platos característicos",
+            lugar: "Chalhuanca",
+            notas: "Cierre tranquilo de la jornada.",
+          },
+        ],
       },
       {
         dia: 5,
-        titulo: "Lagunas altoandinas y Huaccana chanka",
+        titulo: "Cocharcas: santuario y comunidad",
         resumen:
-          "Laguna de Yanahuarmi o Torojocha según la estación, caminata y comida grupal al aire libre (previa autorización), y Huaccana: explicación histórica chanka y talleres con la comunidad. Cena y entrega de un recuerdo final inspirado en la ruta (propuesta).",
+          "Traslado a Cocharcas con parada técnica; visita guiada al santuario, almuerzo de platos picantes, charlas comunitarias y artesanías, tiempo libre y cena.",
         momentos: [],
+        horario: [
+          {
+            hora: "07:00–08:00",
+            actividad: "Desayuno y salida hacia Cocharcas",
+            lugar: "Chalhuanca → Cocharcas",
+            notas: "Traslado estimado: 3–4 horas, con parada técnica.",
+          },
+          {
+            hora: "11:00–12:30",
+            actividad: "Visita guiada al Santuario de Cocharcas",
+            lugar: "Cocharcas",
+            notas:
+              "Explicación histórica, devocional, arquitectónica y patrimonial.",
+          },
+          {
+            hora: "12:30–14:00",
+            actividad: "Almuerzo con platos picantes característicos",
+            lugar: "Cocharcas",
+            notas: "Gastronomía local como eje de identidad.",
+          },
+          {
+            hora: "14:00–16:30",
+            actividad: "Charlas comunitarias y artesanías",
+            lugar: "Cocharcas",
+            notas:
+              "Encuentro con comunidades locales, transmisión de costumbres y exposición/venta de artesanía.",
+          },
+          {
+            hora: "16:30–18:00",
+            actividad: "Tiempo libre",
+            lugar: "Cocharcas",
+            notas: "Descanso o paseo por el pueblo.",
+          },
+          {
+            hora: "19:30–21:00",
+            actividad: "Cena libre con recomendaciones",
+            lugar: "Cocharcas",
+            notas: "Los guías deben indicar lugares seguros y de calidad.",
+          },
+        ],
+      },
+      {
+        dia: 6,
+        titulo: "Yanahuarmi y Huaccana: laguna y memoria chanka",
+        resumen:
+          "Salida a la laguna de Yanahuarmi; caminata interpretativa y comida grupal; traslado a Huaccana para explicación histórica chanka, talleres e interacción comunitaria, tiempo libre, cena de cierre y entrega del recuerdo.",
+        momentos: [],
+        horario: [
+          {
+            hora: "07:00–08:00",
+            actividad: "Desayuno y salida hacia la laguna de Yanahuarmi",
+            lugar: "Cocharcas → Yanahuarmi",
+            notas: "Traslado estimado: 45 minutos–1 h 15.",
+          },
+          {
+            hora: "08:00–10:30",
+            actividad: "Caminata interpretativa por la laguna",
+            lugar: "Laguna de Yanahuarmi",
+            notas:
+              "Observación de paisaje y biodiversidad; ritmo accesible.",
+          },
+          {
+            hora: "10:30–12:00",
+            actividad: "Comida grupal",
+            lugar: "Zona habilitada cerca de la laguna",
+            notas: "Menú ligero y producto local.",
+          },
+          {
+            hora: "12:00–12:45",
+            actividad: "Traslado a Huaccana",
+            lugar: "Yanahuarmi → Huaccana",
+            notas: "Trayecto estimado: 20–30 minutos.",
+          },
+          {
+            hora: "12:45–14:00",
+            actividad: "Explicación histórica sobre los chankas",
+            lugar: "Huaccana",
+            notas:
+              "Contexto precolombino, territorio y memoria cultural.",
+          },
+          {
+            hora: "14:00–16:30",
+            actividad: "Talleres e interacción comunitaria",
+            lugar: "Huaccana",
+            notas:
+              "Relación de la comunidad con la herencia chanka, artesanía, relatos y prácticas locales.",
+          },
+          {
+            hora: "16:30–17:30",
+            actividad: "Tiempo libre y preparación del cierre",
+            lugar: "Huaccana",
+            notas:
+              "Espacio para compras responsables y despedidas.",
+          },
+          {
+            hora: "18:00–19:30",
+            actividad: "Cena de cierre",
+            lugar: "Huaccana",
+            notas: "Cena comunitaria o en restaurante local.",
+          },
+          {
+            hora: "19:30–20:15",
+            actividad: "Fin del recorrido y entrega del recuerdo",
+            lugar: "Huaccana",
+            notas:
+              "Entrega del token conmemorativo, evaluación de satisfacción y despedida.",
+          },
+        ],
       },
     ],
     antesDeViajar: [
       "Ninguna actividad está confirmada: todo requiere verificación y coordinación previa.",
-      "La laguna del quinto día (Yanahuarmi o Torojocha) depende de la estación.",
+      "La laguna del sexto día (Yanahuarmi o Torojocha) depende de la estación.",
       "La comida al aire libre necesita autorización previa del lugar.",
+      "El taller de cocina y hierbas del día 1 es opcional y requiere reserva previa.",
+      "Las termas de Pincahuacho se usan por turnos; considerar las recomendaciones médicas para hipertensión, embarazo o afecciones cardíacas.",
       "Recorrer únicamente miradores seguros y seguir las indicaciones locales.",
       "Las actividades con comunidades requieren acuerdo previo con sus representantes.",
     ],
@@ -609,10 +948,10 @@ export const ITINERARIOS: Itinerario[] = [
     },
     lugaresMapa: [
       { provinciaSlug: "aymaraes", lugarId: "chuquinga", dia: 2 },
-      { provinciaSlug: "aymaraes", lugarId: "pincahuacho", dia: 3 },
-      { provinciaSlug: "chincheros", lugarId: "cocharcas", dia: 4 },
-      { provinciaSlug: "chincheros", lugarId: "yanahuarmi", dia: 5 },
-      { provinciaSlug: "chincheros", lugarId: "toroccocha", dia: 5 },
+      { provinciaSlug: "aymaraes", lugarId: "pincahuacho", dia: 4 },
+      { provinciaSlug: "chincheros", lugarId: "cocharcas", dia: 5 },
+      { provinciaSlug: "chincheros", lugarId: "yanahuarmi", dia: 6 },
+      { provinciaSlug: "chincheros", lugarId: "toroccocha", dia: 6 },
     ],
   },
   {

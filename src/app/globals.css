@@ -1,4 +1,4 @@
-improvement in interfacess
+@import "tailwindcss";
 
 :root {
   --moss: oklch(92% 0.03 150);
@@ -51,7 +51,6 @@ body::before {
     radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.3), transparent 18%);
   mix-blend-mode: screen;
   opacity: 0.8;
-    video: 1;
 }
 
 .serif {

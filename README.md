@@ -7,10 +7,9 @@
   <a href="https://react.dev/"><img alt="React 19" src="https://img.shields.io/badge/React-19.3-61DAFB?style=flat-square&amp;logo=react&amp;logoColor=black" /></a>
   <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" /></a>
   <a href="https://tailwindcss.com/"><img alt="Tailwind CSS 4" src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&amp;logo=tailwindcss&amp;logoColor=white" /></a>
-import GaleriaRuta from "@/components/GaleriaRuta";x GL" src="https://img.shields.io/badge/Mapbox_GL-3-000000?style=flat-square&amp;logo=mapbox&amp;logoColor=white" /></a>
+  <a href="https://www.mapbox.com/"><img alt="Mapbox GL" src="https://img.shields.io/badge/Mapbox_GL-3-000000?style=flat-square&amp;logo=mapbox&amp;logoColor=white" /></a>
   <img alt="COIL 2026" src="https://img.shields.io/badge/COIL-2026-065f46?style=flat-square" />
 </p>
-/** Static export: all routes are prerendered in the build. */
 <p align="center">
   <strong>Del Camino de Santiago a los caminos andinos.</strong><br />
   Una web para leer el territorio, la memoria y la comunidad entre Apurímac y Galicia.
@@ -106,7 +105,7 @@ Abre [http://localhost:3000](http://localhost:3000).
 npm run build
 ```
 
-El sitio se genera en `out/`. Para publicarlo en Hostinger, sube el contenido de `out/` a `public_html/`; el `.htaccess` incluido se encarga del `DirectoryIndex`, la caché y la compresión.
+El sitio se genera en `out/`. Para publicarlo en Hostinger, sube **el contenido** de `out/` a `public_html/` (incluida la carpeta `_next/`), no la carpeta `out/` ni el código fuente. Si actualizas una versión anterior, reemplaza todo el contenido y limpia la caché del navegador; el `.htaccess` incluido se encarga del `DirectoryIndex`, la caché y la compresión.
 
 El proyecto es **100% estático**: no necesita Node.js en el servidor. El token de Mapbox es público, así que conviene restringirlo por dominio desde el panel de Mapbox.
 

@@ -4,7 +4,12 @@ import { ArrowRight } from "lucide";
 import Reveal from "./Reveal";
 import { MorphIcon } from "./MorphIcon";
 import { provinciaPorSlug } from "../lib/provincias";
-import { AVISO_SECUENCIA_DIA, type DiaItinerario, type Itinerario } from "../lib/itinerarios";
+import {
+  AVISO_SECUENCIA_DIA,
+  type DiaItinerario,
+  type HorarioDia,
+  type Itinerario,
+} from "../lib/itinerarios";
 
 export function TarjetaItinerario({
   itinerario,
@@ -80,16 +85,92 @@ export function TarjetaItinerario({
   );
 }
 
+function TablaMomentos({ momentos }: { momentos: DiaItinerario["momentos"] }) {
+  return (
+    <div className="mt-5 overflow-x-auto rounded-2xl bg-white/60">
+      <table className="w-full min-w-[320px] text-left text-sm leading-7">
+        <caption className="px-5 pb-1 pt-4 text-left text-[11px] uppercase tracking-[0.2em] text-emerald-900/75">
+          Secuencia del día
+        </caption>
+        <tbody>
+          {momentos.map((m) => (
+            <tr
+              key={m.momento + m.actividad}
+              className="border-t border-emerald-950/5 transition hover:bg-emerald-950/[0.03]"
+            >
+              <th scope="row" className="whitespace-nowrap px-5 py-2.5 align-top font-semibold">
+                {m.momento}
+              </th>
+              <td className="px-5 py-2.5 text-[0.9375rem] leading-7 text-emerald-950/80">
+                {m.actividad}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function TablaHorario({ horario }: { horario: HorarioDia[] }) {
+  return (
+    <div className="mt-5 overflow-hidden rounded-2xl bg-white/60">
+      <div className="px-5 pb-2 pt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/75">
+        Horario del día
+      </div>
+      <div className="hidden border-b border-emerald-950/10 px-5 py-2 text-[10px] uppercase tracking-[0.18em] text-emerald-900/55 sm:grid sm:grid-cols-[7.5rem_minmax(0,1fr)_10rem] sm:gap-4">
+        <span>Hora</span>
+        <span>Actividad</span>
+        <span className="text-right">Lugar</span>
+      </div>
+      <ol className="m-0 list-none p-0">
+        {horario.map((h) => (
+          <li
+            key={`${h.hora}-${h.actividad}`}
+            className="border-t border-emerald-950/5 px-5 py-3.5 transition hover:bg-emerald-950/[0.03] sm:grid sm:grid-cols-[7.5rem_minmax(0,1fr)_10rem] sm:gap-4"
+          >
+            <div className="text-xs font-semibold tabular-nums text-emerald-900/75 sm:pt-0.5">
+              {h.hora}
+            </div>
+            <div className="mt-1 sm:mt-0">
+              <div className="text-[0.9375rem] font-medium leading-6 text-emerald-950">
+                {h.actividad}
+              </div>
+              {h.notas && (
+                <p className="mt-1 text-[0.8125rem] leading-6 text-emerald-950/65">
+                  {h.notas}
+                </p>
+              )}
+            </div>
+            <div className="mt-1 text-[0.8125rem] leading-6 text-emerald-950/70 sm:mt-0 sm:text-right">
+              <span className="text-emerald-900/50 sm:hidden">Lugar: </span>
+              {h.lugar}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 export function Cronograma({ dias }: { dias: DiaItinerario[] }) {
+  const conHorario = dias.some((d) => (d.horario?.length ?? 0) > 0);
   const conMomentos = dias.some((d) => d.momentos.length > 0);
   return (
     <section aria-labelledby="cronograma">
       <h2 id="cronograma" className="serif text-4xl leading-none sm:text-5xl">
         Día a día
       </h2>
-      {conMomentos && (
-        <p className="mt-3 text-sm leading-7 text-emerald-950/70">{AVISO_SECUENCIA_DIA}</p>
-      )}
+      {conHorario ? (
+        <p className="mt-3 text-sm leading-7 text-emerald-950/70">
+          Horarios propuestos en el documento; se confirman con los prestadores
+          locales.
+        </p>
+      ) : conMomentos ? (
+        <p className="mt-3 text-sm leading-7 text-emerald-950/70">
+          {AVISO_SECUENCIA_DIA}
+        </p>
+      ) : null}
       <ol className="mt-8 space-y-6">
         {dias.map((d) => (
           <li
@@ -97,7 +178,10 @@ export function Cronograma({ dias }: { dias: DiaItinerario[] }) {
             className="rounded-[2rem] border border-white/50 bg-white/50 p-6 backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/70 hover:shadow-[0_20px_50px_rgba(11,40,20,0.1)] sm:p-8"
           >
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-emerald-950 text-sm font-semibold text-white" aria-hidden="true">
+              <span
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-emerald-950 text-sm font-semibold text-white"
+                aria-hidden="true"
+              >
                 {d.dia}
               </span>
               <h3 className="serif text-2xl leading-tight sm:text-3xl">
@@ -105,25 +189,11 @@ export function Cronograma({ dias }: { dias: DiaItinerario[] }) {
               </h3>
             </div>
             <p className="texto-lectura mt-4">{d.resumen}</p>
-            {d.momentos.length > 0 && (
-              <div className="mt-5 overflow-x-auto rounded-2xl bg-white/60">
-                <table className="w-full min-w-[320px] text-left text-sm leading-7">
-                  <caption className="px-5 pb-1 pt-4 text-left text-[11px] uppercase tracking-[0.2em] text-emerald-900/75">
-                    Secuencia del día
-                  </caption>
-                  <tbody>
-                    {d.momentos.map((m) => (
-                      <tr key={m.momento + m.actividad} className="border-t border-emerald-950/5 transition hover:bg-emerald-950/[0.03]">
-                        <th scope="row" className="whitespace-nowrap px-5 py-2.5 align-top font-semibold">
-                          {m.momento}
-                        </th>
-                        <td className="px-5 py-2.5 text-[0.9375rem] leading-7 text-emerald-950/80">{m.actividad}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+            {d.horario && d.horario.length > 0 ? (
+              <TablaHorario horario={d.horario} />
+            ) : d.momentos.length > 0 ? (
+              <TablaMomentos momentos={d.momentos} />
+            ) : null}
           </li>
         ))}
       </ol>

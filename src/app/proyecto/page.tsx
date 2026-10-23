@@ -237,7 +237,7 @@ const RUTAS = [
   {
     nombre: "Circuito Norte",
     identidad: "Interpretación del paisaje y su patrimonio",
-    duracion: "5 días",
+    duracion: "6 días",
     href: "/itinerarios/circuito-norte/",
     imagen: "/img/provincias/chincheros/cocharcas/01.webp",
     alt: "Santuario de la Virgen de Cocharcas, Chincheros",
