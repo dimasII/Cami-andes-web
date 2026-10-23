@@ -1,4 +1,4 @@
-@import "tailwindcss";
+improvementsments "tailwindcss";
 
 :root {
   --moss: oklch(92% 0.03 150);
@@ -30,8 +30,7 @@ html {
 }
 
 body {
-  margin: 0;
-  overflow-x: hidden;
+  margin: 0;overflow-x: hidden;
   font-family: var(--font-manrope), "Manrope", sans-serif;
   background:
     radial-gradient(circle at top left, rgba(198, 255, 221, 0.55), transparent 25%),
@@ -51,6 +50,7 @@ body::before {
     radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.3), transparent 18%);
   mix-blend-mode: screen;
   opacity: 0.8;
+    video: 1;
 }
 
 .serif {
